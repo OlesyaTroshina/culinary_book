@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Перламутровые градиенты для 4 диагональных секторов внешнего круга -->
+    <linearGradient id="nacreSector1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e6ea" />
+      <stop offset="50%" stop-color="#e0f0ff" />
+      <stop offset="100%" stop-color="#f0e6ff" />
+    </linearGradient>
+    <linearGradient id="nacreSector2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e6f5f0" />
+      <stop offset="50%" stop-color="#ffe6f0" />
+      <stop offset="100%" stop-color="#e0e6ff" />
+    </linearGradient>
+    <linearGradient id="nacreSector3" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ffe6ea" />
+      <stop offset="50%" stop-color="#e6f5ff" />
+      <stop offset="100%" stop-color="#f0e6ff" />
+    </linearGradient>
+    <linearGradient id="nacreSector4" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e6ffff" />
+      <stop offset="50%" stop-color="#ffe6f5" />
+      <stop offset="100%" stop-color="#fff5e6" />
+    </linearGradient>
+
+    <!-- Перламутровые градиенты для левой и правой половин внутреннего круга -->
+    <linearGradient id="nacreInnerLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0f5" />
+      <stop offset="50%" stop-color="#f0f8ff" />
+      <stop offset="100%" stop-color="#f5f0ff" />
+    </linearGradient>
+    <linearGradient id="nacreInnerRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e6f0ff" />
+      <stop offset="50%" stop-color="#fff0e6" />
+      <stop offset="100%" stop-color="#f0e6ff" />
+    </linearGradient>
+
+    <!-- Обтравочный контур для внутреннего круга -->
+    <clipPath id="innerCircleClip">
+      <circle cx="200" cy="200" r="90" />
+    </clipPath>
+  </defs>
+
+  <!-- Внешний круг (кольцо) с 4 диагональными секторами -->
+  <!-- Сектор 1: верхний-правый (45°, от 0 до 90 по диагонали) -->
+  <path d="M 200,20 A 180,180 0 0,1 327,73 L 263,127 A 90,90 0 0,0 200,110 Z" fill="url(#nacreSector1)" stroke="#aa9f8c" stroke-width="1.5" />
+  <!-- Сектор 2: верхний-левый (135°) -->
+  <path d="M 327,73 A 180,180 0 0,1 200,380 L 200,290 A 90,90 0 0,0 263,127 Z" fill="url(#nacreSector2)" stroke="#aa9f8c" stroke-width="1.5" />
+  <!-- Сектор 3: нижний-левый (225°) -->
+  <path d="M 200,380 A 180,180 0 0,1 73,327 L 137,263 A 90,90 0 0,0 200,290 Z" fill="url(#nacreSector3)" stroke="#aa9f8c" stroke-width="1.5" />
+  <!-- Сектор 4: нижний-правый (315°) -->
+  <path d="M 73,327 A 180,180 0 0,1 200,20 L 200,110 A 90,90 0 0,0 137,263 Z" fill="url(#nacreSector4)" stroke="#aa9f8c" stroke-width="1.5" />
+
+  <!-- Диагональные разделительные линии на внешнем круге (от внутренней окружности до внешней) -->
+  <!-- Линия 1: 45° (правый верх) -->
+  <line x1="263" y1="127" x2="327" y2="73" stroke="#b8a98b" stroke-width="2.5" />
+  <!-- Линия 2: 135° (левый верх) -->
+  <line x1="137" y1="127" x2="73" y2="73" stroke="#b8a98b" stroke-width="2.5" />
+  <!-- Линия 3: 225° (левый низ) -->
+  <line x1="137" y1="273" x2="73" y2="327" stroke="#b8a98b" stroke-width="2.5" />
+  <!-- Линия 4: 315° (правый низ) -->
+  <line x1="263" y1="273" x2="327" y2="327" stroke="#b8a98b" stroke-width="2.5" />
+
+  <!-- Внешний контур кольца -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#aa9f8c" stroke-width="3" />
+  <!-- Внутренний контур кольца (граница с внутренним кругом) -->
+  <circle cx="200" cy="200" r="90" fill="none" stroke="#aa9f8c" stroke-width="2.5" />
+
+  <!-- Внутренний круг: разделён на левую и правую половины вертикально -->
+  <g clip-path="url(#innerCircleClip)">
+    <!-- Левая половина (заливка) -->
+    <rect x="0" y="0" width="200" height="400" fill="url(#nacreInnerLeft)" />
+    <!-- Правая половина (заливка) -->
+    <rect x="200" y="0" width="200" height="400" fill="url(#nacreInnerRight)" />
+  </g>
+
+  <!-- Вертикальная разделительная линия внутри внутреннего круга -->
+  <line x1="200" y1="110" x2="200" y2="290" stroke="#b8a98b" stroke-width="3" />
+
+  <!-- Контур внутреннего круга (поверх, чтобы перекрыть границы) -->
+  <circle cx="200" cy="200" r="90" fill="none" stroke="#aa9f8c" stroke-width="2.5" />
+</svg>
