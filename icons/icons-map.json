@@ -1,0 +1,458 @@
+{
+  "version": "7.24.84",
+  "generatedAt": "2026-05-21T23:11:23.693Z",
+  "sourceApp": "culinary_book_v7_24_84_compact_category_icons.html",
+  "note": "Справочник для рабочего приложения. base64 в categoryIconMap.",
+  "categories": [
+    {
+      "category": "Фото и оформление рецепта",
+      "file": "Фото и оформление рецепта.png",
+      "relativePath": "icons/categories/Фото и оформление рецепта.png",
+      "bytes": 58150,
+      "md5": "58a4a036bd48d373ce40d2f66311da88"
+    },
+    {
+      "category": "Бисквит",
+      "file": "Бисквит.png",
+      "relativePath": "icons/categories/Бисквит.png",
+      "bytes": 48623,
+      "md5": "f4079c93efc44cf4c2cf7336b50d6397"
+    },
+    {
+      "category": "Шоколадный бисквит",
+      "file": "Шоколадный бисквит.png",
+      "relativePath": "icons/categories/Шоколадный бисквит.png",
+      "bytes": 69772,
+      "md5": "9be5174cce57199570070ea95de0f47c"
+    },
+    {
+      "category": "Коржи",
+      "file": "Коржи.png",
+      "relativePath": "icons/categories/Коржи.png",
+      "bytes": 80360,
+      "md5": "57280eb2f8b3310c724863375b3e5769"
+    },
+    {
+      "category": "Сабле / Песочное тесто",
+      "file": "Сабле - Песочное тесто.png",
+      "relativePath": "icons/categories/Сабле - Песочное тесто.png",
+      "bytes": 61425,
+      "md5": "6d858228428108d4cc73f0f15cda5d4a"
+    },
+    {
+      "category": "Безе",
+      "file": "Безе.png",
+      "relativePath": "icons/categories/Безе.png",
+      "bytes": 54124,
+      "md5": "afd49729606ac00407a2cbeeb31f9468"
+    },
+    {
+      "category": "Печенье",
+      "file": "Печенье.png",
+      "relativePath": "icons/categories/Печенье.png",
+      "bytes": 71699,
+      "md5": "a63b4c6e0b458f7c8d173ad67dea10ed"
+    },
+    {
+      "category": "Макаронс",
+      "file": "Макаронс.png",
+      "relativePath": "icons/categories/Макаронс.png",
+      "bytes": 54261,
+      "md5": "2815be11b83a8eefc3cfd6e3bedfa600"
+    },
+    {
+      "category": "Блинчики",
+      "file": "Блинчики.png",
+      "relativePath": "icons/categories/Блинчики.png",
+      "bytes": 46685,
+      "md5": "a2c4ebcbb97ec35ac79641ca535ba174"
+    },
+    {
+      "category": "Оладьи",
+      "file": "Оладьи.png",
+      "relativePath": "icons/categories/Оладьи.png",
+      "bytes": 72947,
+      "md5": "ddfd7b0488d1b87c9c429f8cdde73ea2"
+    },
+    {
+      "category": "Вафли",
+      "file": "Вафли.png",
+      "relativePath": "icons/categories/Вафли.png",
+      "bytes": 60315,
+      "md5": "a42def976fdabcd302178f71d6e0747d"
+    },
+    {
+      "category": "Пончики",
+      "file": "Пончики.png",
+      "relativePath": "icons/categories/Пончики.png",
+      "bytes": 45865,
+      "md5": "3baaeda179c7751540942a862cf892be"
+    },
+    {
+      "category": "Кексы / Капкейки",
+      "file": "Кексы - Капкейки.png",
+      "relativePath": "icons/categories/Кексы - Капкейки.png",
+      "bytes": 46139,
+      "md5": "68fe67a958b5906f6d183ad6f1d3c125"
+    },
+    {
+      "category": "Эклеры / Заварные",
+      "file": "Эклеры - Заварные.png",
+      "relativePath": "icons/categories/Эклеры - Заварные.png",
+      "bytes": 43809,
+      "md5": "4e85ac8a7c15b9feb858e9507a889fed"
+    },
+    {
+      "category": "Тарт / Тарталетки",
+      "file": "Тарт - Тарталетки.png",
+      "relativePath": "icons/categories/Тарт - Тарталетки.png",
+      "bytes": 62891,
+      "md5": "3947ce4b7b881531df3e7b30d9c6dba7"
+    },
+    {
+      "category": "Слойка",
+      "file": "Слойка.png",
+      "relativePath": "icons/categories/Слойка.png",
+      "bytes": 54585,
+      "md5": "5ff4e243d5c0a7f730790899c3d092e1"
+    },
+    {
+      "category": "Брауни",
+      "file": "Брауни.png",
+      "relativePath": "icons/categories/Брауни.png",
+      "bytes": 61417,
+      "md5": "e7019a00d6165cb33d86dd0e4defe497"
+    },
+    {
+      "category": "Чизкейк",
+      "file": "Чизкейк.png",
+      "relativePath": "icons/categories/Чизкейк.png",
+      "bytes": 52697,
+      "md5": "2963fd49dd7de55254e81b1e285af14a"
+    },
+    {
+      "category": "Основа чизкейка",
+      "file": "Основа чизкейка.png",
+      "relativePath": "icons/categories/Основа чизкейка.png",
+      "bytes": 57426,
+      "md5": "1cd7b527b238a16d0985d7662a5926e0"
+    },
+    {
+      "category": "Пряники",
+      "file": "Пряники.png",
+      "relativePath": "icons/categories/Пряники.png",
+      "bytes": 61595,
+      "md5": "c9dfc84c714e85029ecf4e259eea70c1"
+    },
+    {
+      "category": "Меренговый рулет",
+      "file": "Меренговый рулет.png",
+      "relativePath": "icons/categories/Меренговый рулет.png",
+      "bytes": 63651,
+      "md5": "fc6e129410cb8dc5abb8fed2e9d78117"
+    },
+    {
+      "category": "Синнабоны / Булочки",
+      "file": "Синнабоны - Булочки.png",
+      "relativePath": "icons/categories/Синнабоны - Булочки.png",
+      "bytes": 64608,
+      "md5": "0265a1dadb1d69935aae615fbe355e09"
+    },
+    {
+      "category": "Круассаны",
+      "file": "Круассаны.png",
+      "relativePath": "icons/categories/Круассаны.png",
+      "bytes": 54585,
+      "md5": "5ff4e243d5c0a7f730790899c3d092e1"
+    },
+    {
+      "category": "Хлеб / Бриошь",
+      "file": "Хлеб - Бриошь.png",
+      "relativePath": "icons/categories/Хлеб - Бриошь.png",
+      "bytes": 63627,
+      "md5": "476a96f6c4dd06a2a11c065a292d2329"
+    },
+    {
+      "category": "Крем",
+      "file": "Крем.png",
+      "relativePath": "icons/categories/Крем.png",
+      "bytes": 51630,
+      "md5": "771a1835f86e758f2f49901d851099f3"
+    },
+    {
+      "category": "Мусс",
+      "file": "Мусс.png",
+      "relativePath": "icons/categories/Мусс.png",
+      "bytes": 44542,
+      "md5": "bce5621c003b8cb9a8f41a2bc1799ac8"
+    },
+    {
+      "category": "Изолирующий крем",
+      "file": "Изолирующий крем.png",
+      "relativePath": "icons/categories/Изолирующий крем.png",
+      "bytes": 52468,
+      "md5": "7f986765d8e4bf2fee25751b4d560c74"
+    },
+    {
+      "category": "Ганаш",
+      "file": "Ганаш.png",
+      "relativePath": "icons/categories/Ганаш.png",
+      "bytes": 40154,
+      "md5": "5636969476a8c4381e7e9e991246297a"
+    },
+    {
+      "category": "Меренга",
+      "file": "Меренга.png",
+      "relativePath": "icons/categories/Меренга.png",
+      "bytes": 41596,
+      "md5": "7ca1436a4f81b76483b6b108fa987442"
+    },
+    {
+      "category": "Джем",
+      "file": "Джем.png",
+      "relativePath": "icons/categories/Джем.png",
+      "bytes": 60304,
+      "md5": "4f4446e0f440b695212bb3fd5f0d9e7d"
+    },
+    {
+      "category": "Конфи / Компоте",
+      "file": "Конфи - Компоте.png",
+      "relativePath": "icons/categories/Конфи - Компоте.png",
+      "bytes": 60086,
+      "md5": "08e4cb67a2e8a22114f8f5db313e0a46"
+    },
+    {
+      "category": "Карамель",
+      "file": "Карамель.png",
+      "relativePath": "icons/categories/Карамель.png",
+      "bytes": 43020,
+      "md5": "202b3433f7eeaa0c2440caf2d105a84a"
+    },
+    {
+      "category": "Курд",
+      "file": "Курд.png",
+      "relativePath": "icons/categories/Курд.png",
+      "bytes": 53273,
+      "md5": "49811c26d5e90f14a38da04b4a058062"
+    },
+    {
+      "category": "Пралине",
+      "file": "Пралине.png",
+      "relativePath": "icons/categories/Пралине.png",
+      "bytes": 58696,
+      "md5": "867cba5af4663e6590a6ebb6311c823f"
+    },
+    {
+      "category": "Кремю",
+      "file": "Кремю.png",
+      "relativePath": "icons/categories/Кремю.png",
+      "bytes": 55276,
+      "md5": "b155eb085e6cde0171c93c36ab049116"
+    },
+    {
+      "category": "Намелака",
+      "file": "Намелака.png",
+      "relativePath": "icons/categories/Намелака.png",
+      "bytes": 52648,
+      "md5": "866c8f0359a3af06e05e051a6981ecae"
+    },
+    {
+      "category": "Суфле",
+      "file": "Суфле.png",
+      "relativePath": "icons/categories/Суфле.png",
+      "bytes": 70298,
+      "md5": "818a9b334a058b4f1c0fe41f30a26b04"
+    },
+    {
+      "category": "Чизкейк масса",
+      "file": "Чизкейк масса.png",
+      "relativePath": "icons/categories/Чизкейк масса.png",
+      "bytes": 47779,
+      "md5": "6f28faa06529280db71d90e4d3a8dc12"
+    },
+    {
+      "category": "Паста / Крем-паста",
+      "file": "Паста - Крем-паста.png",
+      "relativePath": "icons/categories/Паста - Крем-паста.png",
+      "bytes": 57019,
+      "md5": "d6c010e2e6681bfaab250cc7b6ae96a6"
+    },
+    {
+      "category": "Хрустящий слой / Кранч",
+      "file": "Хрустящий слой - Кранч.png",
+      "relativePath": "icons/categories/Хрустящий слой - Кранч.png",
+      "bytes": 60789,
+      "md5": "6b6d1f940d3452fa4dc521db5b93d0ec"
+    },
+    {
+      "category": "Ягодная вставка",
+      "file": "Ягодная вставка.png",
+      "relativePath": "icons/categories/Ягодная вставка.png",
+      "bytes": 60693,
+      "md5": "cac40cb8dad9bf0b733f5a3604a63001"
+    },
+    {
+      "category": "Ореховая масса",
+      "file": "Ореховая масса.png",
+      "relativePath": "icons/categories/Ореховая масса.png",
+      "bytes": 45735,
+      "md5": "027ffdae1fde6b8e8cd97a2f8015640d"
+    },
+    {
+      "category": "Зефир",
+      "file": "Зефир.png",
+      "relativePath": "icons/categories/Зефир.png",
+      "bytes": 64197,
+      "md5": "6c738a7117d46c77f222e2c01d0221a6"
+    },
+    {
+      "category": "Мармелад",
+      "file": "Мармелад.png",
+      "relativePath": "icons/categories/Мармелад.png",
+      "bytes": 68173,
+      "md5": "020e877aece167a46b11036942f966ea"
+    },
+    {
+      "category": "Желе",
+      "file": "Желе.png",
+      "relativePath": "icons/categories/Желе.png",
+      "bytes": 65975,
+      "md5": "26ec6c10a7e3958c4239bec1ffefc5ef"
+    },
+    {
+      "category": "Глазурь",
+      "file": "Глазурь.png",
+      "relativePath": "icons/categories/Глазурь.png",
+      "bytes": 25561,
+      "md5": "c147fa5cdc3e0c0165ede04b44b49919"
+    },
+    {
+      "category": "Велюр",
+      "file": "Велюр.png",
+      "relativePath": "icons/categories/Велюр.png",
+      "bytes": 42457,
+      "md5": "2af3e408414348af3df119b2128196d3"
+    },
+    {
+      "category": "Гель",
+      "file": "Гель.png",
+      "relativePath": "icons/categories/Гель.png",
+      "bytes": 54827,
+      "md5": "df7198ce1c403f12838922967b20b31e"
+    },
+    {
+      "category": "Заморозка / Вставка",
+      "file": "Заморозка - Вставка.png",
+      "relativePath": "icons/categories/Заморозка - Вставка.png",
+      "bytes": 71982,
+      "md5": "8dbcd311a1d2c33b7b6c220a5853ce03"
+    },
+    {
+      "category": "Пропитка",
+      "file": "Пропитка.png",
+      "relativePath": "icons/categories/Пропитка.png",
+      "bytes": 35211,
+      "md5": "ce48acd10b681a96cc209b76e7b82249"
+    },
+    {
+      "category": "Отдушка",
+      "file": "Отдушка.png",
+      "relativePath": "icons/categories/Отдушка.png",
+      "bytes": 36217,
+      "md5": "5658aef35f0eaa7f8901009a04bdd8c2"
+    },
+    {
+      "category": "Сиропы",
+      "file": "Сиропы.png",
+      "relativePath": "icons/categories/Сиропы.png",
+      "bytes": 39213,
+      "md5": "298487407e504769615fd5d6800e8a03"
+    },
+    {
+      "category": "Экстракты",
+      "file": "Экстракты.png",
+      "relativePath": "icons/categories/Экстракты.png",
+      "bytes": 40828,
+      "md5": "f3f234bca2288291c3ba55211d0f76ca"
+    },
+    {
+      "category": "Алкоголь",
+      "file": "Алкоголь.png",
+      "relativePath": "icons/categories/Алкоголь.png",
+      "bytes": 50834,
+      "md5": "3a5220079f37b1fa37f4089ad7f8dcb2"
+    },
+    {
+      "category": "Красители",
+      "file": "Красители.png",
+      "relativePath": "icons/categories/Красители.png",
+      "bytes": 63154,
+      "md5": "96f81e32865d2d51772a489f5da4a969"
+    },
+    {
+      "category": "Кандурин / Блёстки",
+      "file": "Кандурин - Блёстки.png",
+      "relativePath": "icons/categories/Кандурин - Блёстки.png",
+      "bytes": 65291,
+      "md5": "9e468cd7d3d44e2563c35abe16d9bfdc"
+    },
+    {
+      "category": "Шоколад",
+      "file": "Шоколад.png",
+      "relativePath": "icons/categories/Шоколад.png",
+      "bytes": 53521,
+      "md5": "318460218d1970b6d3c1321ff1007e3b"
+    },
+    {
+      "category": "Конфеты",
+      "file": "Конфеты.png",
+      "relativePath": "icons/categories/Конфеты.png",
+      "bytes": 38859,
+      "md5": "4ce017110e21bfb52d469c135124f034"
+    },
+    {
+      "category": "Корпусные изделия",
+      "file": "Корпусные изделия.png",
+      "relativePath": "icons/categories/Корпусные изделия.png",
+      "bytes": 56368,
+      "md5": "2049482fe4112f67efa47a0fca5f4e61"
+    },
+    {
+      "category": "Темперирование",
+      "file": "Темперирование.png",
+      "relativePath": "icons/categories/Темперирование.png",
+      "bytes": 42511,
+      "md5": "7f5ce4e6ed3589fd269e7159a8a359c0"
+    },
+    {
+      "category": "Инструменты",
+      "file": "Инструменты.png",
+      "relativePath": "icons/categories/Инструменты.png",
+      "bytes": 38115,
+      "md5": "e87a4d4ff9e0b1c59d1f699cff88ad57"
+    },
+    {
+      "category": "Декор",
+      "file": "Декор.png",
+      "relativePath": "icons/categories/Декор.png",
+      "bytes": 64409,
+      "md5": "506cdbe21d46f32c81fcfdbfedcebc7e"
+    },
+    {
+      "category": "Упаковка",
+      "file": "Упаковка.png",
+      "relativePath": "icons/categories/Упаковка.png",
+      "bytes": 59375,
+      "md5": "8d259e73142f6b9b4f5bd05f442ce2ab"
+    },
+    {
+      "category": "Доставка",
+      "file": "Доставка.png",
+      "relativePath": "icons/categories/Доставка.png",
+      "bytes": 49770,
+      "md5": "3f7f6090f5758677c1020c5b3ecda766"
+    }
+  ],
+  "rawMatchedByHash": [],
+  "unusedRawFiles": []
+}
