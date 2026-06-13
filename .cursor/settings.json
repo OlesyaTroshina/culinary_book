@@ -1,0 +1,25 @@
+{
+  "plugins": {
+    "figma": {
+      "enabled": true
+    },
+    "netlify-skills": {
+      "enabled": true
+    },
+    "datadog": {
+      "enabled": true
+    },
+    "scylladb": {
+      "enabled": true
+    },
+    "coralogix-mcp": {
+      "enabled": true
+    },
+    "slack": {
+      "enabled": true
+    },
+    "vantage": {
+      "enabled": true
+    }
+  }
+}

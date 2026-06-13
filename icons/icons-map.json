@@ -1,6 +1,6 @@
 {
   "version": "7.24.84",
-  "generatedAt": "2026-05-21T23:11:23.693Z",
+  "generatedAt": "2026-06-13T22:27:53.959Z",
   "sourceApp": "culinary_book_v7_24_84_compact_category_icons.html",
   "note": "Справочник для рабочего приложения. base64 в categoryIconMap.",
   "categories": [
@@ -451,6 +451,13 @@
       "relativePath": "icons/categories/Доставка.png",
       "bytes": 49770,
       "md5": "3f7f6090f5758677c1020c5b3ecda766"
+    },
+    {
+      "category": "Покрытие",
+      "file": "Покрытие.png",
+      "relativePath": "icons/categories/Покрытие.png",
+      "bytes": 110920,
+      "md5": "2931aa7fefad726c3795dfc6eda5ddd9"
     }
   ],
   "rawMatchedByHash": [],

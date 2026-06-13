@@ -1,0 +1,727 @@
+/**
+ * Pastry Controls Unified — premium pearl-gold system (TZ_buttons_culinary_book)
+ * Visual layer only. Loaded after inline styles; overrides texture & control chrome.
+ */
+
+:root {
+  --pastry-pearl-texture: url("buttons/textures/pearl-mother-of-pearl.png");
+  --real-pearl-texture: var(--pastry-pearl-texture);
+  --u-btn-pearl-texture: var(--pastry-pearl-texture);
+
+  --btn-radius-xl: 999px;
+  --btn-radius-lg: 22px;
+  --btn-height-primary: 56px;
+  --btn-height-secondary: 44px;
+  --btn-height-small: 34px;
+  --btn-padding-primary-x: 28px;
+  --btn-padding-secondary-x: 20px;
+  --btn-icon-size: 24px;
+  --btn-medallion-size: 42px;
+  --btn-transition: 180ms ease;
+
+  --pastry-gold-border: rgba(154, 86, 0, 0.82);
+  --pastry-gold-border-soft: rgba(177, 145, 95, 0.55);
+  --pastry-pearl-overlay: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(255, 255, 255, 0.06) 42%,
+    rgba(178, 137, 66, 0.1) 100%
+  );
+  --pastry-pearl-shimmer: linear-gradient(
+    118deg,
+    transparent 0 38%,
+    rgba(255, 248, 238, 0.22) 48%,
+    rgba(235, 210, 250, 0.16) 52%,
+    transparent 62%
+  );
+  --pastry-shadow-base:
+    inset 0 1px 0 rgba(255, 252, 232, 0.98),
+    inset 0 2px 0 rgba(255, 235, 168, 0.76),
+    inset 1px 0 0 rgba(255, 225, 134, 0.88),
+    inset -1px 0 0 rgba(172, 119, 31, 0.68),
+    inset 0 -1px 0 rgba(158, 105, 24, 0.66),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.88),
+    inset 0 0 0 3px rgba(142, 78, 0, 0.76),
+    inset 0 0 0 4px rgba(255, 229, 145, 0.42),
+    inset 0 0 16px rgba(255, 248, 222, 0.24),
+    0 1px 0 rgba(255, 246, 213, 0.68),
+    0 2px 0 rgba(176, 121, 32, 0.34),
+    0 6px 14px rgba(86, 56, 16, 0.14);
+  --pastry-shadow-primary:
+    inset 0 1px 0 rgba(255, 252, 232, 0.99),
+    inset 0 2px 0 rgba(255, 235, 168, 0.82),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.98),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.94),
+    inset 0 0 0 3px rgba(142, 78, 0, 0.82),
+    inset 0 0 0 4px rgba(255, 229, 145, 0.52),
+    inset 0 0 20px rgba(255, 248, 222, 0.32),
+    0 1px 0 rgba(255, 246, 213, 0.76),
+    0 3px 0 rgba(176, 121, 32, 0.38),
+    0 8px 18px rgba(86, 56, 16, 0.16),
+    0 0 22px rgba(217, 171, 88, 0.14);
+  --pastry-shadow-pressed:
+    inset 0 2px 6px rgba(104, 58, 8, 0.28),
+    inset 0 1px 0 rgba(255, 244, 196, 0.72),
+    inset 0 0 0 1px rgba(142, 78, 0, 0.62),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.58),
+    0 1px 2px rgba(86, 56, 16, 0.12);
+  --pastry-medallion-bg:
+    radial-gradient(
+      circle at 29% 20%,
+      rgba(255, 255, 245, 0.98) 0%,
+      rgba(255, 238, 170, 0.7) 18%,
+      rgba(255, 255, 255, 0) 42%
+    ),
+    linear-gradient(180deg, #fff3bb 0%, #ffd45a 24%, #e49a12 45%, #a85d00 63%, #653000 100%);
+  --pastry-danger-tint: linear-gradient(
+    180deg,
+    rgba(255, 220, 210, 0.22),
+    rgba(210, 120, 100, 0.12) 55%,
+    rgba(178, 137, 66, 0.08) 100%
+  );
+  --pastry-danger-border: rgba(168, 72, 48, 0.72);
+  --pastry-danger-glow: 0 0 18px rgba(210, 120, 90, 0.18);
+  --pastry-focus-ring: 0 0 0 2px rgba(255, 248, 230, 0.95), 0 0 0 4px rgba(217, 171, 88, 0.58);
+  --pastry-texture-size: 180px 120px;
+  --pastry-texture-size-sm: 150px 96px;
+  --joy-pearl-shadow: var(--pastry-shadow-base);
+}
+
+/* ---------- shared pearl surface ---------- */
+.pastry-pearl-surface,
+.pastry-btn,
+.pastry-btn.pastry-btn,
+.btn.u-btn,
+.file-proxy.u-btn {
+  --pastry-surface-bg:
+    var(--pastry-pearl-overlay),
+    var(--pastry-pearl-shimmer),
+    var(--u-btn-pearl-texture) center / var(--pastry-texture-size) repeat;
+}
+
+.pastry-btn,
+.btn.u-btn,
+.file-proxy.u-btn {
+  position: relative !important;
+  isolation: isolate !important;
+  border-radius: var(--btn-radius-xl) !important;
+  border: 1px solid var(--pastry-gold-border) !important;
+  background: var(--pastry-surface-bg) !important;
+  box-shadow: var(--pastry-shadow-base) !important;
+  transition:
+    transform var(--btn-transition),
+    box-shadow var(--btn-transition),
+    filter var(--btn-transition),
+    opacity var(--btn-transition) !important;
+}
+
+.pastry-btn::before,
+.btn.u-btn::before,
+.file-proxy.u-btn::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 2px 4px auto 4px !important;
+  height: 42% !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.52) 0%,
+    rgba(255, 255, 255, 0.08) 72%,
+    transparent 100%
+  ) !important;
+  opacity: 0.78 !important;
+}
+
+.pastry-btn:hover:not(:disabled),
+.btn.u-btn:hover:not(:disabled),
+.file-proxy.u-btn:hover:not(:disabled) {
+  transform: translateY(-1px) !important;
+  filter: saturate(1.04) brightness(1.02) !important;
+  box-shadow: var(--pastry-shadow-base), 0 0 16px rgba(217, 171, 88, 0.16) !important;
+}
+
+.pastry-btn:active:not(:disabled),
+.btn.u-btn:active:not(:disabled),
+.file-proxy.u-btn:active:not(:disabled) {
+  transform: translateY(1px) !important;
+  filter: saturate(0.98) brightness(0.99) !important;
+  box-shadow: var(--pastry-shadow-pressed) !important;
+}
+
+.pastry-btn:focus-visible,
+.btn.u-btn:focus-visible,
+.file-proxy.u-btn:focus-visible {
+  outline: none !important;
+  box-shadow: var(--pastry-shadow-base), var(--pastry-focus-ring) !important;
+}
+
+.pastry-btn:disabled,
+.pastry-btn[aria-disabled="true"],
+.btn.u-btn:disabled,
+.file-proxy.u-btn:disabled {
+  opacity: 0.58 !important;
+  filter: saturate(0.82) brightness(0.96) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 232, 0.72),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.72),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.42),
+    0 2px 6px rgba(86, 56, 16, 0.08) !important;
+}
+
+/* ---------- variants ---------- */
+.pastry-btn--primary,
+.btn-save.u-btn,
+.btn-add.u-btn,
+.btn-main-active.u-btn {
+  box-shadow: var(--pastry-shadow-primary) !important;
+}
+
+.pastry-btn--primary:hover:not(:disabled),
+.btn-save.u-btn:hover:not(:disabled),
+.btn-add.u-btn:hover:not(:disabled),
+.btn-main-active.u-btn:hover:not(:disabled) {
+  box-shadow: var(--pastry-shadow-primary), 0 0 24px rgba(217, 171, 88, 0.22) !important;
+}
+
+.pastry-btn--secondary,
+.btn-category.u-btn,
+.btn-theme.u-btn,
+.file-proxy.u-btn {
+  box-shadow: var(--pastry-shadow-base) !important;
+}
+
+.pastry-btn--tertiary,
+.btn-search.u-btn {
+  min-height: var(--btn-height-small) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 232, 0.92),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.88),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.68),
+    0 2px 8px rgba(86, 56, 16, 0.1) !important;
+}
+
+.pastry-btn--tertiary .u-btn__icon,
+.btn-search.u-btn .u-btn__icon {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  font-size: 15px !important;
+}
+
+.pastry-btn--danger,
+.btn-delete.u-btn {
+  border-color: var(--pastry-danger-border) !important;
+  background:
+    var(--pastry-danger-tint),
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / var(--pastry-texture-size) repeat !important;
+  box-shadow: var(--pastry-shadow-base), var(--pastry-danger-glow) !important;
+}
+
+.pastry-btn--danger .u-btn__icon,
+.btn-delete.u-btn .u-btn__icon {
+  border-color: rgba(205, 120, 80, 0.72) !important;
+  color: #9b3a18 !important;
+  -webkit-text-fill-color: #9b3a18 !important;
+}
+
+.pastry-btn--danger .u-svg-fill,
+.btn-delete.u-btn .u-svg-fill {
+  fill: url(#uGoldFill) !important;
+}
+
+.pastry-btn--icon,
+.u-btn--icon-only {
+  border-radius: 50% !important;
+  padding: 6px !important;
+  justify-content: center !important;
+}
+
+.pastry-btn--icon.u-btn--icon-only,
+.btn-delete.u-btn--icon-only,
+.u-btn--icon-only {
+  background:
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
+}
+
+/* ---------- medallion / label aliases ---------- */
+.pastry-btn__medallion,
+.u-btn__icon {
+  position: relative !important;
+  z-index: 2 !important;
+  flex: 0 0 auto !important;
+  width: var(--btn-medallion-size) !important;
+  height: var(--btn-medallion-size) !important;
+  min-width: var(--btn-medallion-size) !important;
+  margin-left: 2px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid rgba(205, 151, 46, 0.68) !important;
+  background: var(--pastry-medallion-bg) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 246, 0.98),
+    inset 0 2px 0 rgba(255, 236, 176, 0.84),
+    inset 0 0 0 1px rgba(255, 225, 128, 0.84),
+    inset 0 0 0 2px rgba(184, 112, 10, 0.5),
+    0 1px 0 rgba(255, 244, 210, 0.62),
+    0 2px 5px rgba(75, 43, 8, 0.24) !important;
+  color: #8b4700 !important;
+  -webkit-text-fill-color: #8b4700 !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  pointer-events: none !important;
+}
+
+.u-btn--icon-only .u-btn__icon,
+.pastry-btn--icon .pastry-btn__medallion {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  margin: 0 !important;
+}
+
+.pastry-btn__label,
+.u-btn__label {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ---------- pearl sliders ---------- */
+.pearl-slider-wrap label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #6f4b25 !important;
+  text-align: center !important;
+}
+
+.pearl-slider,
+input[type="range"].pearl-slider,
+#customThemeOverlay,
+.settings-panel input[type="range"]:not(.print-hidden-range) {
+  width: 100% !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  height: 14px !important;
+  border-radius: var(--btn-radius-xl) !important;
+  accent-color: #c79f5a !important;
+  cursor: pointer !important;
+  background:
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
+  border: 1px solid var(--pastry-gold-border) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 232, 0.98),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.54),
+    0 2px 0 rgba(176, 121, 32, 0.22),
+    0 5px 12px rgba(86, 56, 16, 0.1) !important;
+  transition: box-shadow var(--btn-transition), filter var(--btn-transition) !important;
+}
+
+.pearl-slider:hover {
+  filter: saturate(1.03) brightness(1.015) !important;
+}
+
+.pearl-slider:focus-visible {
+  outline: none !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 232, 0.98),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.54),
+    var(--pastry-focus-ring) !important;
+}
+
+.pearl-slider:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+}
+
+.pearl-slider::-webkit-slider-runnable-track,
+.pearl-slider::-moz-range-track {
+  height: 14px !important;
+  border-radius: var(--btn-radius-xl) !important;
+  background:
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
+  border: 1px solid var(--pastry-gold-border-soft) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 232, 0.98),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.48) !important;
+}
+
+.pearl-slider::-webkit-slider-thumb,
+.pearl-slider::-moz-range-thumb {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  margin-top: -6px !important;
+  cursor: grab !important;
+  background: var(--pastry-medallion-bg) !important;
+  border: 1px solid rgba(205, 151, 46, 0.78) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 246, 0.98),
+    inset 0 0 0 1px rgba(255, 225, 128, 0.84),
+    inset 0 0 0 2px rgba(184, 112, 10, 0.5),
+    0 2px 6px rgba(75, 43, 8, 0.26) !important;
+  transition: transform var(--btn-transition), box-shadow var(--btn-transition) !important;
+}
+
+.pearl-slider::-webkit-slider-thumb:active,
+.pearl-slider::-moz-range-thumb:active {
+  cursor: grabbing !important;
+  transform: scale(0.96) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(104, 58, 8, 0.22),
+    inset 0 0 0 1px rgba(255, 225, 128, 0.72),
+    0 1px 3px rgba(75, 43, 8, 0.2) !important;
+}
+
+.pearl-slider::-moz-range-thumb {
+  margin-top: 0 !important;
+}
+
+/* ---------- pearl joysticks (layout + chrome) ---------- */
+.pearl-joystick {
+  --joy-size: 176px;
+  position: relative;
+  width: var(--joy-size);
+  height: var(--joy-size);
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.pearl-joystick .joy-cut {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: calc(var(--joy-size) - 22px);
+  transform-origin: center;
+}
+
+.pearl-joystick .joy-cut.cut-v {
+  transform: translate(-50%, -50%);
+}
+
+.pearl-joystick .joy-cut.cut-h {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.pearl-joystick .joy-cut.cut-d1 {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pearl-joystick .joy-cut.cut-d2 {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.joy-dir,
+.joy-half {
+  position: absolute;
+  cursor: pointer;
+  font-family: var(--font-ui, "Segoe UI", system-ui, sans-serif);
+}
+
+.joy-dir {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 27px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.joy-up {
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joy-right {
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.joy-down {
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joy-left {
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.joy-up:hover {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.joy-right:hover {
+  transform: translateY(-50%) translateY(-1px);
+}
+
+.joy-down:hover {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.joy-left:hover {
+  transform: translateY(-50%) translateY(-1px);
+}
+
+.joy-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 78px;
+  height: 78px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.joy-half {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.joy-half:first-child {
+  border-right: 2px solid rgba(166, 126, 65, 0.68);
+}
+
+.rotate-left,
+.rotate-right {
+  font-size: 30px;
+}
+
+.zoom-out,
+.zoom-in {
+  font-size: 25px;
+}
+
+.pearl-slider-wrap {
+  margin-top: 8px;
+}
+
+.joystick-title span {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted, #8a7358);
+  text-align: right;
+  line-height: 1.2;
+}
+
+@media (max-width: 760px) {
+  .pearl-joystick {
+    --joy-size: 160px;
+  }
+}
+
+.joystick-block {
+  padding: 12px !important;
+  border-radius: 24px !important;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 244, 0.82), rgba(239, 228, 213, 0.76)),
+    var(--u-btn-pearl-texture) center / 220px 140px repeat !important;
+  border: 1px solid var(--pastry-gold-border-soft) !important;
+  box-shadow:
+    8px 8px 18px rgba(120, 100, 80, 0.12),
+    -6px -6px 16px rgba(255, 255, 255, 0.82),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.72) !important;
+}
+
+.joystick-title {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #6f4b25 !important;
+}
+
+.pearl-joystick {
+  isolation: isolate !important;
+  overflow: hidden !important;
+  border: 1px solid var(--pastry-gold-border) !important;
+  background:
+    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.1) 32%, transparent 58%),
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / 200px 150px repeat !important;
+  box-shadow: var(--joy-pearl-shadow) !important;
+  filter: saturate(1.03) contrast(1.02) !important;
+}
+
+.pearl-joystick::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 6px !important;
+  border-radius: 50% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255, 255, 255, 0.68), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 32%, rgba(255, 210, 232, 0.18) 64%, rgba(255, 255, 255, 0.1)),
+    var(--u-btn-pearl-texture) center / 190px 140px repeat !important;
+  opacity: 0.88 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 245, 214, 0.9),
+    inset 0 0 0 2px rgba(210, 150, 38, 0.6),
+    inset 0 0 22px rgba(255, 255, 255, 0.42) !important;
+}
+
+.pearl-joystick::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 50% !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(115deg, transparent 0 46%, rgba(135, 82, 15, 0.32) 46.5% 47.2%, transparent 48%),
+    linear-gradient(65deg, transparent 0 46%, rgba(135, 82, 15, 0.28) 46.5% 47.2%, transparent 48%),
+    linear-gradient(90deg, transparent 0 48.8%, rgba(135, 82, 15, 0.26) 49.1% 50.9%, transparent 51.2%),
+    linear-gradient(0deg, transparent 0 48.8%, rgba(135, 82, 15, 0.26) 49.1% 50.9%, transparent 51.2%) !important;
+  opacity: 0.78 !important;
+}
+
+.pearl-joystick .joy-cut {
+  background: linear-gradient(90deg, transparent, rgba(119, 72, 11, 0.26), transparent) !important;
+  opacity: 0.62 !important;
+  z-index: 2 !important;
+}
+
+.joy-dir,
+.joy-half {
+  z-index: 4 !important;
+  border: none !important;
+  background: transparent !important;
+  color: #9b5d00 !important;
+  -webkit-text-fill-color: #9b5d00 !important;
+  text-shadow:
+    0 -1px 0 rgba(255, 241, 170, 0.74),
+    0 1px 0 rgba(104, 48, 0, 0.62),
+    0 2px 3px rgba(48, 23, 0, 0.3) !important;
+  filter: drop-shadow(0 2px 2px rgba(75, 43, 8, 0.18)) !important;
+  transition: transform var(--btn-transition), filter var(--btn-transition), color var(--btn-transition) !important;
+}
+
+.joy-dir:hover,
+.joy-half:hover {
+  color: #d89412 !important;
+  -webkit-text-fill-color: #d89412 !important;
+  filter: drop-shadow(0 0 7px rgba(217, 171, 88, 0.46)) drop-shadow(0 2px 2px rgba(75, 43, 8, 0.16)) !important;
+}
+
+.joy-dir:active,
+.joy-half:active {
+  transform: scale(0.96) !important;
+  color: #8b5a21 !important;
+}
+
+.joy-dir:focus-visible,
+.joy-half:focus-visible {
+  outline: none !important;
+  box-shadow: var(--pastry-focus-ring) !important;
+  border-radius: 50% !important;
+}
+
+.joy-center {
+  z-index: 3 !important;
+  border: 1px solid var(--pastry-gold-border) !important;
+  background:
+    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.1) 36%, transparent 60%),
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / 130px 80px repeat !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 232, 0.98),
+    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
+    inset 0 0 0 2px rgba(238, 184, 64, 0.8),
+    inset 0 0 0 3px rgba(142, 78, 0, 0.54),
+    0 2px 0 rgba(176, 121, 32, 0.28),
+    0 7px 14px rgba(86, 56, 16, 0.13) !important;
+}
+
+/* ---------- recipe type filter chips ---------- */
+.recipe-filter-btn {
+  border: 1px solid var(--pastry-gold-border) !important;
+  border-radius: var(--btn-radius-xl) !important;
+  padding: 7px 14px !important;
+  min-height: var(--btn-height-small) !important;
+  background:
+    var(--pastry-pearl-overlay),
+    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
+  color: #8b5a21 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: var(--pastry-shadow-base) !important;
+  transition:
+    transform var(--btn-transition),
+    filter var(--btn-transition),
+    box-shadow var(--btn-transition) !important;
+}
+
+.recipe-filter-btn:hover {
+  transform: translateY(-1px) !important;
+  filter: saturate(1.03) brightness(1.02) !important;
+  box-shadow: var(--pastry-shadow-base), 0 0 14px rgba(217, 171, 88, 0.12) !important;
+}
+
+.recipe-filter-btn:active {
+  transform: translateY(1px) !important;
+  box-shadow: var(--pastry-shadow-pressed) !important;
+}
+
+.recipe-filter-btn.active {
+  border-color: rgba(185, 133, 54, 0.78) !important;
+  color: #9b5d00 !important;
+  box-shadow: var(--pastry-shadow-primary) !important;
+  filter: saturate(1.04) !important;
+}
+
+.recipe-filter-btn:focus-visible {
+  outline: none !important;
+  box-shadow: var(--pastry-shadow-base), var(--pastry-focus-ring) !important;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .pastry-btn,
+  .btn.u-btn,
+  .file-proxy.u-btn,
+  .pearl-slider,
+  .pearl-slider::-webkit-slider-thumb,
+  .pearl-slider::-moz-range-thumb,
+  .recipe-filter-btn,
+  .joy-dir,
+  .joy-half {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .pastry-btn:hover:not(:disabled),
+  .btn.u-btn:hover:not(:disabled),
+  .file-proxy.u-btn:hover:not(:disabled),
+  .recipe-filter-btn:hover {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,965 @@
+---
+description: ТЗ и Cursor-rule для детальной системы кнопок приложения «Кулинарная книга-калькулятор» в стиле premium pastry / pearl gold / soft 3D.
+globs:
+  - "**/*.html"
+  - "**/*.css"
+  - "**/*.js"
+alwaysApply: false
+---
+
+# ТЗ: система кнопок приложения «Кулинарная книга-калькулятор»
+
+Версия документа: 1.0  
+Назначение: единый файл для Cursor / дизайнера / генератора изображений / фронтенд-реализации.  
+Рекомендуемое место в проекте: `.cursor/rules/premium-pastry-buttons.mdc` или `docs/TZ_buttons_culinary_book.md`.
+
+---
+
+## 1. Главная цель
+
+Нужно создать и внедрить единую дизайнерскую систему кнопок для приложения «Кулинарная книга-калькулятор» в стиле уже выбранной эталонной кнопки «Добавить новый рецепт».
+
+Ключевой визуальный стиль:
+
+- premium pastry UI;
+- pearl luxury;
+- warm gold trim;
+- soft neumorphism;
+- tactile 3D realism;
+- mother-of-pearl texture;
+- polished gold frame;
+- glassy highlights;
+- embossed golden typography;
+- теплый кондитерский премиальный интерфейс.
+
+Кнопки должны выглядеть как часть дорогого, уютного, красивого кулинарного приложения, а не как стандартные системные кнопки браузера.
+
+---
+
+## 2. Главный запрет для Cursor
+
+Cursor не должен ломать рабочую архитектуру приложения.
+
+Запрещено:
+
+- переписывать приложение с нуля;
+- менять расчетную логику;
+- менять импорт Excel;
+- менять структуру рецептов;
+- менять связанные ингредиенты;
+- менять себестоимость, закупку, техкарту и PDF, если задача касается только визуала кнопок;
+- удалять существующие обработчики кликов;
+- заменять рабочие `<button>` на картинки без логики;
+- вшивать текст кнопки внутрь PNG/JPG так, чтобы его нельзя было изменить кодом;
+- подключать тяжелые библиотеки ради простого hover-эффекта;
+- скачивать сторонние ZIP/skills/scripts без проверки;
+- подключать внешние CDN без отдельного согласования.
+
+Основное правило: визуальная доработка должна быть поверх существующей логики.
+
+---
+
+## 3. Как Cursor должен использовать этот файл
+
+Cursor должен воспринимать документ как техническое задание и визуальный rule-file.
+
+Алгоритм работы Cursor:
+
+1. Найти существующие кнопки в текущей рабочей версии приложения.
+2. Сохранить все существующие `id`, `class`, `onclick`, event listeners и связанные функции.
+3. Добавить или улучшить только CSS-классы, SVG-иконки, переменные стиля и визуальные состояния.
+4. Не менять бизнес-логику.
+5. Не заменять кнопки картинками с текстом.
+6. Для интерактивных кнопок использовать настоящий HTML-текст, чтобы кнопки оставались доступными, адаптивными и редактируемыми.
+7. Сгенерированные изображения использовать только как:
+   - текстуру перламутра;
+   - декоративный фон;
+   - SVG-иконки;
+   - отдельные декоративные элементы без текста.
+8. После внедрения проверить работу всех старых функций приложения.
+
+---
+
+## 4. Генеративные и дизайнерские ресурсы для создания эталонных ассетов
+
+Эти ресурсы нужны не для автоматического скачивания Cursor, а как ориентиры и инструменты, где дизайнер или пользователь может сгенерировать / доработать ассеты, а затем положить готовые файлы в проект.
+
+### 4.1. Cursor Rules — постоянные инструкции для проекта
+
+Официальная документация Cursor Rules:  
+https://cursor.com/docs/rules
+
+Использовать для:
+
+- хранения этого ТЗ как `.mdc` rule;
+- постоянного напоминания Cursor о стиле кнопок;
+- запрета ломать расчеты, импорт, печать и рабочую архитектуру.
+
+Рекомендуемый путь:
+
+```text
+.cursor/rules/premium-pastry-buttons.mdc
+```
+
+---
+
+### 4.2. ChatGPT Images — генерация и редактирование эталонных PNG/WebP
+
+Официальная справка OpenAI:  
+https://help.openai.com/en/articles/11084440-images-in-chatgpt
+
+Использовать для:
+
+- генерации эталонной кнопки по референсу;
+- редактирования существующей кнопки;
+- создания PNG с прозрачным фоном;
+- создания текстуры перламутра;
+- генерации отдельных декоративных медальонов и иконок.
+
+Важно:
+
+- не генерировать все кнопки как картинки с текстом;
+- лучше генерировать пустую базу кнопки без текста и отдельные иконки;
+- текст кнопки должен оставаться живым HTML/CSS-текстом.
+
+---
+
+### 4.3. Recraft — SVG, векторные иконки и декоративные элементы
+
+Официальный AI Vector Generator:  
+https://www.recraft.ai/ai-vector-generator
+
+Использовать для:
+
+- генерации SVG-иконок;
+- золотых медальонов;
+- декоративных контуров;
+- векторных элементов без потери качества;
+- подготовки icon-set под маленькие размеры 24–32 px.
+
+Лучший формат результата:
+
+```text
+SVG для иконок и медальонов
+PNG/WebP для сложных перламутровых текстур
+```
+
+---
+
+### 4.4. Figma Make / Figma AI — сборка UI-kit и проверка системы
+
+Figma Make:  
+https://www.figma.com/make/
+
+Figma AI UI Generator:  
+https://www.figma.com/solutions/ai-ui-generator/
+
+Использовать для:
+
+- раскладки UI-kit листа;
+- проверки визуальной иерархии кнопок;
+- создания компонентной системы;
+- сравнения состояний normal / hover / pressed / disabled;
+- ручной доработки отступов, размеров и пропорций.
+
+Рекомендуемый процесс:
+
+1. Сгенерировать визуальные ассеты.
+2. Собрать в Figma сетку кнопок.
+3. Проверить читаемость текста.
+4. Проверить состояния.
+5. Передать Cursor размеры, CSS-токены, SVG и текстуры.
+
+---
+
+### 4.5. Adobe Firefly — аккуратные коммерческие визуальные ассеты
+
+Adobe Firefly:  
+https://firefly.adobe.com/
+
+Adobe Firefly product page:  
+https://www.adobe.com/products/firefly.html
+
+Использовать для:
+
+- генерации перламутровых текстур;
+- генерации декоративных поверхностей;
+- создания безопасных визуальных ассетов для бренда;
+- вариаций одного стиля.
+
+Хорошо подходит для фонов, текстур и декоративной отделки.
+
+---
+
+### 4.6. Midjourney — художественные варианты эталонных кнопок
+
+Официальная документация Midjourney:  
+https://docs.midjourney.com/hc/en-us
+
+Prompt Basics:  
+https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics
+
+Image Prompts:  
+https://docs.midjourney.com/hc/en-us/articles/32040250122381-Image-Prompts
+
+Использовать для:
+
+- поиска художественного направления;
+- генерации красивых moodboard-вариантов;
+- проверки материалов: золото, перламутр, объем, глянец;
+- создания референсов, но не финального HTML-кода.
+
+Важно:
+
+- Midjourney может ошибаться в тексте, поэтому текст кнопок лучше не вшивать в изображение;
+- итоговую кнопку для приложения лучше собирать в CSS/SVG.
+
+---
+
+### 4.7. GSAP — сложные анимации при необходимости
+
+Официальная документация GSAP:  
+https://gsap.com/docs/v3/
+
+Использовать только если нужны сложные анимации:
+
+- сложный shimmer;
+- управляемое появление;
+- timeline-анимации;
+- согласованные движения нескольких элементов.
+
+Для обычных hover / pressed / active состояний лучше использовать CSS transitions без GSAP.
+
+---
+
+### 4.8. Motion.dev — легкие production-grade UI-анимации
+
+Официальный сайт:  
+https://motion.dev/
+
+Документация:  
+https://motion.dev/docs
+
+Использовать, если приложение уже переходит на компонентную архитектуру или нужны аккуратные motion transitions.
+
+Для текущего HTML/CSS-приложения подключать только при явной необходимости.
+
+---
+
+### 4.9. LottieFiles — маленькие декоративные JSON-анимации
+
+LottieFiles:  
+https://lottiefiles.com/
+
+Lottie Docs:  
+https://lottiefiles.github.io/lottie-docs/
+
+Использовать только для:
+
+- маленьких декоративных анимаций;
+- loader/success animation;
+- пустых состояний;
+- редких вау-эффектов.
+
+Не использовать Lottie для каждой кнопки. Для кнопок достаточно CSS/SVG.
+
+---
+
+### 4.10. Rive — интерактивные анимации и state machine
+
+Rive:  
+https://rive.app/
+
+Использовать только для:
+
+- сложных интерактивных элементов;
+- state-machine анимаций;
+- живых персонажей / декоративных помощников;
+- редких premium moments.
+
+Не использовать Rive для обычных кнопок «Сохранить», «Редактировать», «Печать».
+
+---
+
+## 5. Правильная производственная цепочка
+
+### Вариант A — самый безопасный для приложения
+
+1. Сгенерировать в ChatGPT Images / Firefly / Midjourney эталонную пустую кнопку без текста.
+2. Сгенерировать или нарисовать перламутровую текстуру без текста.
+3. Сгенерировать SVG-иконки в Recraft.
+4. Собрать UI-kit в Figma.
+5. Передать Cursor:
+   - готовые SVG;
+   - готовую texture image;
+   - размеры;
+   - CSS-токены;
+   - список классов.
+6. Cursor внедряет CSS и SVG, не трогая логику.
+
+### Вариант B — если ассетов пока нет
+
+Cursor должен создать CSS-only версию кнопок:
+
+- gradients;
+- pseudo-elements `::before` и `::after`;
+- box-shadow;
+- inset-shadow;
+- text-shadow;
+- background-blend-mode;
+- transition;
+- focus-visible;
+- disabled state.
+
+После этого можно заменить CSS-текстуру на реальный сгенерированный WebP/PNG.
+
+---
+
+## 6. Форматы ассетов
+
+Рекомендуемая структура папок:
+
+```text
+assets/
+  ui/
+    buttons/
+      textures/
+        pearl-button-base.webp
+        pearl-button-base@2x.webp
+        pearl-button-hover.webp
+      frames/
+        gold-frame-capsule.svg
+        gold-frame-medallion.svg
+      icons/
+        icon-plus-gold.svg
+        icon-save-gold.svg
+        icon-edit-gold.svg
+        icon-trash-gold.svg
+        icon-print-gold.svg
+        icon-pdf-gold.svg
+        icon-upload-gold.svg
+        icon-download-gold.svg
+      references/
+        button-add-new-recipe-reference.png
+```
+
+Рекомендуемые форматы:
+
+- SVG — иконки, медальоны, декоративные контуры;
+- WebP — тяжелые текстуры;
+- PNG с прозрачностью — если WebP не подходит;
+- CSS gradients — для состояний и fallback.
+
+Запрещено:
+
+- делать каждую кнопку отдельной картинкой с текстом;
+- использовать JPG для кнопок с прозрачностью;
+- вставлять огромные PNG без оптимизации;
+- делать разные стили для разных кнопок без общей системы.
+
+---
+
+## 7. Визуальная система кнопок
+
+### 7.1. Общая художественная идея
+
+Кнопки должны сочетать:
+
+- перламутр;
+- теплое золото;
+- кремово-жемчужные переливы;
+- мягкие 3D-тени;
+- ювелирную окантовку;
+- стеклянные блики;
+- объемный золотой текст;
+- эстетичный кондитерский luxury-настрой.
+
+Кнопки должны ощущаться как:
+
+- дорогие;
+- теплые;
+- мягкие;
+- тактильные;
+- аппетитные;
+- женственные;
+- аккуратные;
+- не дешевые и не пластиковые.
+
+---
+
+### 7.2. Материалы
+
+#### Перламутровая поверхность
+
+Внутренняя часть кнопки:
+
+- mother-of-pearl texture;
+- shell-like iridescent surface;
+- creamy champagne;
+- blush beige;
+- soft rose pearl;
+- pale lilac pearl;
+- warm ivory;
+- golden highlights;
+- translucent fiber-like waves;
+- subtle gloss.
+
+#### Золотая окантовка
+
+Окантовка:
+
+- layered polished gold border;
+- honey amber gold;
+- champagne gold;
+- warm jewelry metal;
+- double frame;
+- inner highlight;
+- outer shadow;
+- slight bevel.
+
+#### Текст
+
+Текст:
+
+- real HTML text;
+- embossed golden typography;
+- amber-gold gradient;
+- readable at small sizes;
+- text-shadow for depth;
+- no baked text in image;
+- no blurry generated text.
+
+---
+
+## 8. Типы кнопок
+
+### 8.1. Primary buttons
+
+Используются для главных действий:
+
+- Добавить новый рецепт;
+- Сохранить рецепт;
+- Сохранить рецепт-PDF;
+- Добавить ингредиент.
+
+Визуально:
+
+- крупнее;
+- ярче;
+- богаче золотой кант;
+- сильнее объем;
+- теплое мягкое сияние.
+
+---
+
+### 8.2. Secondary buttons
+
+Используются для важных рабочих действий:
+
+- Редактировать;
+- Импорт;
+- Экспорт;
+- Печать техкарты;
+- Печать закупки;
+- Выбрать фото;
+- Настроить фон.
+
+Визуально:
+
+- чуть спокойнее primary;
+- меньше свечение;
+- тоньше кант;
+- та же фактура.
+
+---
+
+### 8.3. Tertiary / utility buttons
+
+Используются для служебных действий:
+
+- Отмена;
+- Закрыть;
+- Назад;
+- Далее;
+- Свернуть все;
+- Развернуть все;
+- Очистить форму.
+
+Визуально:
+
+- компактнее;
+- мягче;
+- менее активное золото;
+- хорошая читаемость без доминирования.
+
+---
+
+### 8.4. Danger buttons
+
+Используются для опасных действий:
+
+- Удалить рецепт;
+- Очистить базу.
+
+Визуально:
+
+- общий стиль сохраняется;
+- разрешен ruby-gold / rose-amber акцент;
+- нельзя делать агрессивную красную flat-кнопку;
+- опасность должна быть понятной, но эстетичной.
+
+---
+
+### 8.5. Icon buttons / medallions
+
+Используются для маленьких действий:
+
+- плюс;
+- минус;
+- карандаш;
+- корзина;
+- принтер;
+- PDF;
+- стрелка вверх;
+- стрелка вниз;
+- раскрыть;
+- свернуть;
+- загрузить;
+- сохранить.
+
+Визуально:
+
+- круглый золотой медальон;
+- мягкий объем;
+- рельефная иконка;
+- читаемость в 24–32 px;
+- safe-zone вокруг иконки.
+
+---
+
+## 9. Состояния кнопок
+
+Каждая кнопка должна иметь состояния:
+
+### Normal
+
+- спокойный перламутр;
+- мягкий золотой кант;
+- читаемый текст;
+- аккуратная тень.
+
+### Hover
+
+- чуть ярче блик;
+- мягкое золотое свечение;
+- легкий подъем кнопки;
+- плавный transition.
+
+### Pressed
+
+- кнопка визуально чуть утоплена;
+- более глубокая inset shadow;
+- блик смещен;
+- текст остается читаемым.
+
+### Active / Selected
+
+- теплое сияние;
+- усиленный кант;
+- состояние ясно отличается от hover;
+- без кричащего свечения.
+
+### Disabled
+
+- приглушенный перламутр;
+- матовее золото;
+- сниженный контраст;
+- pointer-events disabled;
+- визуально понятно, что кнопка недоступна.
+
+### Focus-visible
+
+Обязательно для доступности:
+
+- мягкое золотистое outline/glow;
+- не удалять focus полностью;
+- кнопка должна быть доступна с клавиатуры.
+
+---
+
+## 10. Размеры и пропорции
+
+Рекомендуемые CSS-токены:
+
+```css
+:root {
+  --btn-radius-xl: 999px;
+  --btn-radius-lg: 22px;
+  --btn-height-primary: 56px;
+  --btn-height-secondary: 44px;
+  --btn-height-small: 34px;
+  --btn-padding-primary-x: 28px;
+  --btn-padding-secondary-x: 20px;
+  --btn-icon-size: 24px;
+  --btn-medallion-size: 42px;
+  --btn-transition: 180ms ease;
+}
+```
+
+Primary button:
+
+```text
+height: 52–60px
+border-radius: 999px
+horizontal padding: 24–34px
+left medallion: 38–46px
+font size: 18–22px depending on layout
+```
+
+Secondary button:
+
+```text
+height: 40–48px
+border-radius: 999px
+font size: 14–17px
+```
+
+Small utility button:
+
+```text
+height: 32–36px
+font size: 12–14px
+```
+
+Icon button:
+
+```text
+size: 34–44px
+icon visual size: 18–24px
+safe-zone: минимум 6–8px внутри круга
+```
+
+---
+
+## 11. CSS-направление реализации
+
+Cursor должен стремиться к такой архитектуре:
+
+```html
+<button class="pastry-btn pastry-btn--primary">
+  <span class="pastry-btn__medallion" aria-hidden="true">
+    <!-- inline SVG icon -->
+  </span>
+  <span class="pastry-btn__label">Добавить новый рецепт</span>
+</button>
+```
+
+Базовые классы:
+
+```text
+.pastry-btn
+.pastry-btn--primary
+.pastry-btn--secondary
+.pastry-btn--tertiary
+.pastry-btn--danger
+.pastry-btn--icon
+.pastry-btn--small
+.pastry-btn__medallion
+.pastry-btn__icon
+.pastry-btn__label
+```
+
+Cursor должен сохранить старые классы, если на них завязана логика, и добавить новые классы дополнительно.
+
+Пример:
+
+```html
+<button id="saveRecipeBtn" class="old-save-class pastry-btn pastry-btn--primary">
+  <span class="pastry-btn__label">Сохранить рецепт</span>
+</button>
+```
+
+---
+
+## 12. Анимации
+
+Базовые анимации реализовать через CSS:
+
+```text
+transition: transform, box-shadow, filter, background-position, opacity;
+```
+
+Разрешенные эффекты:
+
+- мягкий hover-lift;
+- тонкий shimmer по перламутру;
+- золотистый glow по канту;
+- pressed inset shadow;
+- gentle focus ring;
+- disabled fade.
+
+Запрещенные эффекты:
+
+- дерганая анимация;
+- резкое мерцание;
+- бесконечный активный shimmer на всех кнопках;
+- тяжелая 3D-анимация на каждом hover;
+- анимации, мешающие читать текст.
+
+Обязательное правило доступности:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .pastry-btn {
+    transition: none;
+    animation: none;
+  }
+}
+```
+
+---
+
+## 13. Главный мастер-промт для генерации UI-kit
+
+Использовать в ChatGPT Images / Firefly / Midjourney / Figma AI как основу.
+
+```text
+Create a complete luxury UI button design system for a culinary recipe calculator app, based on the provided reference button style. Premium pastry interface, pearl luxury, warm gold trim, soft neumorphism, tactile decorative realism. Create a polished UI kit sheet showing a full family of buttons: long primary capsule buttons, medium oval buttons, small utility buttons, circular icon medallion buttons, toggle buttons, print/export buttons, navigation buttons.
+
+Each button should feature a luminous mother-of-pearl inner surface with shell-like iridescent textures in creamy champagne, blush beige, soft rose pearl, pale lilac pearl, warm ivory and golden highlights. Use layered polished gold borders, elegant embossed golden typography, soft studio lighting, subtle glassy gloss, refined shadows, and rich tactile depth.
+
+Include button types for: Add New Recipe, Save Recipe, Edit, Delete, Add Ingredient, Collapse All, Expand All, Save PDF, Print Tech Card, Print Shopping List, Import, Export, Choose Photo, Crop Photo, Background Settings, Preview, Confirm, Cancel, Back, Next, Open, Close.
+
+Include circular icon buttons for plus, minus, pencil, trash, printer, pdf, arrows, expand, collapse, upload, download, save.
+
+Show button states: normal, hover, pressed, active, disabled.
+
+The whole composition should look like a cohesive premium design system board for a high-end pastry-themed application, elegant, warm, detailed, readable, and luxurious. Preserve tactile 3D depth, pearl texture, warm gold framing, and premium readable typography.
+
+Avoid flat design, cheap plastic, neon gold, chrome metal, sci-fi interface, cyberpunk, childish cartoon buttons, low detail, blurry text, harsh shadows, cold silver palette, generic mobile UI, poor readability, clutter, oversaturated colors, low quality textures, rough edges, plain gradients.
+```
+
+---
+
+## 14. Промт для генерации пустой базовой кнопки без текста
+
+Этот вариант самый полезный для внедрения в приложение, потому что текст потом будет живым HTML.
+
+```text
+Create a blank luxury UI button asset without any text. Long horizontal capsule shape, premium pastry interface, luminous mother-of-pearl inner surface, shell-like iridescent texture, creamy champagne, blush beige, soft rose pearl, pale lilac pearl, warm ivory, subtle golden highlights. Double layered warm polished gold border, beveled jewelry-like trim, soft 3D volume, glassy highlights, delicate shadows, refined tactile realism. Left circular golden medallion area integrated into the button, but without icon and without text. Transparent background. Clean crisp edges. Suitable as a reusable UI button base for a web application. No letters, no words, no logo, no watermark.
+```
+
+---
+
+## 15. Промт для генерации перламутровой текстуры
+
+```text
+Seamless premium mother-of-pearl texture for luxury pastry UI buttons. Iridescent shell surface, creamy champagne, blush beige, soft rose pearl, pale lilac pearl, warm ivory, subtle golden highlights, translucent fibrous waves, refined gloss, soft studio lighting, elegant tactile depth. No text, no objects, no frame, no harsh contrast, no dark stains. High resolution, seamless or tile-friendly, suitable as CSS background texture for UI buttons.
+```
+
+---
+
+## 16. Промт для генерации золотого медальона-иконки
+
+```text
+Create a circular luxury gold medallion UI icon button, warm polished gold, honey amber metallic finish, beveled rim, soft 3D relief, inner glow, subtle glassy highlight, delicate shadow, premium pastry interface style. Centered embossed icon: [ICON NAME]. Transparent background. Crisp vector-like edges. Readable at 24–32 px. No text, no letters, no extra decoration, no background card.
+```
+
+Заменить `[ICON NAME]` на:
+
+```text
+plus
+minus
+pencil
+trash
+printer
+PDF symbol
+arrow up
+arrow down
+expand
+collapse
+upload
+download
+save
+```
+
+---
+
+## 17. Промт для Recraft SVG icon-set
+
+```text
+Create a cohesive SVG icon set for a premium pastry recipe calculator app. Style: embossed warm gold, polished jewelry-like relief, soft highlights, clean readable pictograms, elegant rounded forms, suitable for 24x24 and 32x32 UI icons. Icons: plus, minus, save, edit pencil, trash, printer, PDF document, import, export, upload, download, arrow up, arrow down, expand, collapse, confirm checkmark, cancel cross, photo, crop, settings. Transparent background. No text labels. Consistent stroke weight, centered, safe-zone around each icon.
+```
+
+---
+
+## 18. Промт для Figma Make / Figma AI
+
+```text
+Build a polished UI-kit board for a culinary recipe calculator app using a premium pastry pearl-gold button design system. Arrange components into groups: Primary Buttons, Secondary Buttons, Utility Buttons, Danger Buttons, Icon Buttons, Toggle Buttons, States.
+
+Visual style: mother-of-pearl button surfaces, warm polished gold trim, soft neumorphism, tactile 3D depth, elegant embossed golden typography, creamy champagne and blush pearl palette.
+
+Create component variants for normal, hover, pressed, active, disabled, focus-visible. Use real editable text layers, not baked text in images. Keep spacing consistent. Show responsive button widths and small icon-only medallions.
+```
+
+---
+
+## 19. Список кнопок приложения
+
+### Главные действия
+
+- Добавить новый рецепт
+- Сохранить рецепт
+- Редактировать рецепт
+- Удалить рецепт
+
+### Ингредиенты и категории
+
+- Добавить ингредиент
+- Добавить категорию
+- Добавить еще
+- Сохранить ингредиент
+- Редактировать ингредиент
+- Удалить ингредиент
+
+### Управление блоками
+
+- Свернуть все
+- Развернуть все
+- Открыть
+- Закрыть
+- Назад
+- Далее
+- Подтвердить
+- Отмена
+
+### Печать и экспорт
+
+- Сохранить рецепт-PDF
+- Печать техкарты
+- Печать закупки
+- Экспорт
+- Импорт
+
+### Фото и оформление
+
+- Выбрать фото
+- Кадрировать фото
+- Настроить фон
+- Выбрать подложку
+- Предпросмотр
+
+### Служебные / опасные
+
+- Очистить форму
+- Очистить базу
+- Сбросить настройки
+
+---
+
+## 20. Acceptance criteria — как понять, что задача выполнена безупречно
+
+Визуально:
+
+- кнопки выглядят как одна система;
+- стиль совпадает с эталонной кнопкой;
+- перламутр читается мягко и дорого;
+- золото теплое, не кислотное;
+- текст хорошо читается;
+- кнопки не выглядят пластиковыми;
+- hover/pressed/disabled отличаются, но не ломают стиль;
+- иконки видны в 24–32 px.
+
+Технически:
+
+- кнопки остаются настоящими `<button>` или корректными интерактивными элементами;
+- старые обработчики событий сохранены;
+- нет ошибок в консоли;
+- приложение открывается;
+- сохранение рецептов работает;
+- редактирование работает;
+- удаление работает;
+- добавление ингредиентов работает;
+- себестоимость работает;
+- закупка работает;
+- техкарта работает;
+- PDF работает;
+- импорт работает;
+- связанные ингредиенты не сломаны.
+
+Доступность:
+
+- есть `:focus-visible`;
+- disabled state понятен;
+- текст не вшит в картинку;
+- кнопки доступны с клавиатуры;
+- анимации отключаются при `prefers-reduced-motion`.
+
+Производительность:
+
+- нет огромных картинок без оптимизации;
+- нет тяжелых библиотек ради простого эффекта;
+- SVG оптимизированы;
+- текстуры сжаты в WebP/PNG;
+- визуальные эффекты не тормозят интерфейс.
+
+---
+
+## 21. Финальная инструкция для Cursor перед внедрением
+
+Перед началом работы Cursor должен ответить кратким планом:
+
+```text
+1. Какие файлы будут изменены.
+2. Какие классы кнопок будут добавлены.
+3. Какие старые функции будут сохранены.
+4. Какие ассеты нужны или будут созданы как CSS fallback.
+5. Как будет проведена проверка после внедрения.
+```
+
+После этого Cursor может вносить изменения.
+
+Если Cursor видит, что изменение кнопок затрагивает расчетную логику, импорт, печать, PDF, связанные ингредиенты или структуру рецептов — он обязан остановиться и сначала предупредить пользователя.
+
+---
+
+## 22. Короткий промт для быстрой генерации одной кнопки
+
+```text
+Create a premium pastry pearl-gold UI button for a culinary recipe calculator app. Shape: [long capsule / medium oval / small utility / circular icon medallion]. Text: [BUTTON TEXT]. Icon: [ICON NAME if needed]. Style: luminous mother-of-pearl inner surface, warm polished gold layered border, soft neumorphism, tactile 3D depth, glassy highlights, elegant embossed amber-gold typography, creamy champagne and blush pearl palette. State: [normal / hover / pressed / active / disabled]. Transparent background if asset-based. No cheap plastic, no flat design, no neon gold, no blurry text, no sci-fi style.
+```
+
+---
+
+## 23. Короткий промт для Cursor на внедрение CSS
+
+```text
+Внедри систему кнопок premium pastry / pearl-gold / soft 3D поверх текущего приложения.
+
+Не меняй расчетную логику, импорт, PDF, печать, закупку, себестоимость, связанные ингредиенты и обработчики событий.
+
+Сохрани существующие id/class/onclick/event listeners. Добавь новые CSS-классы pastry-btn, pastry-btn--primary, pastry-btn--secondary, pastry-btn--tertiary, pastry-btn--danger, pastry-btn--icon, pastry-btn__medallion, pastry-btn__label.
+
+Текст кнопок должен оставаться HTML-текстом, не картинкой. Иконки — inline SVG или SVG-файлы. Эффекты: CSS gradients, box-shadow, inset-shadow, pseudo-elements, hover, pressed, disabled, focus-visible, prefers-reduced-motion.
+
+После внедрения проверь приложение на ошибки в консоли и работу всех старых функций.
+```
+
+---
+
+## 24. Главное резюме
+
+Идеальная реализация кнопок для «Кулинарной книги-калькулятора» — это не набор отдельных картинок, а полноценная UI-система:
+
+- настоящие HTML-кнопки;
+- единые CSS-классы;
+- общие CSS-токены;
+- SVG-иконки;
+- перламутровая текстура как фон;
+- золотые декоративные рамки;
+- доступные состояния;
+- аккуратная анимация;
+- полное сохранение рабочей логики приложения.
+
+Главный визуальный образ: мягкая премиальная кондитерская кнопка из перламутра и теплого золота, как маленький ювелирный элемент внутри красивого приложения.
