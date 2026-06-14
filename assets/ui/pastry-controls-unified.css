@@ -1,118 +1,158 @@
 /**
- * Pastry Controls Unified — premium pearl-gold system (TZ_buttons_culinary_book)
- * Visual layer only. Loaded after inline styles; overrides texture & control chrome.
+ * Design #4 — «Жемчуг и золото Premium»
+ * Единая система кнопок и управляющих элементов (TZ_buttons_culinary_book).
+ * Только визуальный слой — без изменения логики приложения.
  */
 
 :root {
-  --pastry-pearl-texture: url("buttons/textures/pearl-mother-of-pearl.png");
-  --real-pearl-texture: var(--pastry-pearl-texture);
-  --u-btn-pearl-texture: var(--pastry-pearl-texture);
+  /* --- Design #4 tokens --- */
+  --btn-pearl-top: rgba(255, 253, 247, 0.96);
+  --btn-pearl-mid: rgba(255, 247, 232, 0.92);
+  --btn-pearl-bottom: rgba(244, 226, 198, 0.9);
 
-  --btn-radius-xl: 999px;
-  --btn-radius-lg: 22px;
-  --btn-height-primary: 56px;
-  --btn-height-secondary: 44px;
-  --btn-height-small: 34px;
-  --btn-padding-primary-x: 28px;
-  --btn-padding-secondary-x: 20px;
-  --btn-icon-size: 24px;
-  --btn-medallion-size: 42px;
+  --btn-gold-light: #f6d992;
+  --btn-gold-main: #d6a23a;
+  --btn-gold-dark: #9d6718;
+
+  --btn-text-main: #4a2f22;
+  --btn-text-soft: #7a5a45;
+  --btn-text-disabled: rgba(96, 78, 68, 0.38);
+
+  --btn-border-soft: rgba(210, 157, 62, 0.58);
+  --btn-border-bright: rgba(245, 204, 117, 0.9);
+
+  --btn-shadow-outer: 0 6px 14px rgba(91, 54, 22, 0.14);
+  --btn-shadow-hover: 0 8px 18px rgba(120, 72, 28, 0.18);
+  --btn-shadow-pressed:
+    inset 0 3px 7px rgba(110, 70, 35, 0.22),
+    0 2px 6px rgba(80, 50, 25, 0.1);
+
+  --btn-inner-light: inset 0 1px 1px rgba(255, 255, 255, 0.92);
+  --btn-inner-gold: inset 0 -1px 0 rgba(183, 121, 24, 0.32);
+
+  --btn-radius-lg: 999px;
+  --btn-radius-md: 18px;
+  --btn-radius-sm: 14px;
+
+  --btn-height-lg: 48px;
+  --btn-height-md: 44px;
+  --btn-height-sm: 38px;
+
+  --btn-icon-lg: 34px;
+  --btn-icon-md: 30px;
+  --btn-icon-sm: 24px;
+
+  --btn-focus-ring: 0 0 0 3px rgba(232, 190, 110, 0.32);
+
+  --btn-pearl-bg:
+    linear-gradient(145deg, var(--btn-pearl-top), var(--btn-pearl-mid) 48%, var(--btn-pearl-bottom)),
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.95), transparent 34%);
+
+  --btn-pearl-bg-secondary:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 246, 232, 0.82));
+
+  --btn-medallion-bg:
+    radial-gradient(circle at 32% 22%, #fffef5 0%, #ffe566 12%, #f4bc1e 30%, #db9410 52%, #a86808 72%, #5c3400 100%);
+  --btn-medallion-gloss:
+    radial-gradient(ellipse 88% 62% at 34% 18%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 210, 0.55) 38%, rgba(255, 255, 255, 0) 72%);
+  --btn-medallion-shade:
+    radial-gradient(ellipse 92% 68% at 50% 100%, rgba(45, 22, 0, 0.42) 0%, transparent 74%);
+  --btn-medallion-rim:
+    conic-gradient(from 210deg, rgba(255, 244, 190, 0.72), rgba(214, 162, 58, 0.55) 25%, rgba(90, 52, 8, 0.28) 50%, rgba(255, 230, 150, 0.62) 75%, rgba(255, 244, 190, 0.72));
+
   --btn-transition: 180ms ease;
 
-  --pastry-gold-border: rgba(154, 86, 0, 0.82);
-  --pastry-gold-border-soft: rgba(177, 145, 95, 0.55);
-  --pastry-pearl-overlay: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.36) 0%,
-    rgba(255, 255, 255, 0.06) 42%,
-    rgba(178, 137, 66, 0.1) 100%
-  );
-  --pastry-pearl-shimmer: linear-gradient(
-    118deg,
-    transparent 0 38%,
-    rgba(255, 248, 238, 0.22) 48%,
-    rgba(235, 210, 250, 0.16) 52%,
-    transparent 62%
-  );
-  --pastry-shadow-base:
-    inset 0 1px 0 rgba(255, 252, 232, 0.98),
-    inset 0 2px 0 rgba(255, 235, 168, 0.76),
-    inset 1px 0 0 rgba(255, 225, 134, 0.88),
-    inset -1px 0 0 rgba(172, 119, 31, 0.68),
-    inset 0 -1px 0 rgba(158, 105, 24, 0.66),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.88),
-    inset 0 0 0 3px rgba(142, 78, 0, 0.76),
-    inset 0 0 0 4px rgba(255, 229, 145, 0.42),
-    inset 0 0 16px rgba(255, 248, 222, 0.24),
-    0 1px 0 rgba(255, 246, 213, 0.68),
-    0 2px 0 rgba(176, 121, 32, 0.34),
-    0 6px 14px rgba(86, 56, 16, 0.14);
-  --pastry-shadow-primary:
-    inset 0 1px 0 rgba(255, 252, 232, 0.99),
-    inset 0 2px 0 rgba(255, 235, 168, 0.82),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.98),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.94),
-    inset 0 0 0 3px rgba(142, 78, 0, 0.82),
-    inset 0 0 0 4px rgba(255, 229, 145, 0.52),
-    inset 0 0 20px rgba(255, 248, 222, 0.32),
-    0 1px 0 rgba(255, 246, 213, 0.76),
-    0 3px 0 rgba(176, 121, 32, 0.38),
-    0 8px 18px rgba(86, 56, 16, 0.16),
-    0 0 22px rgba(217, 171, 88, 0.14);
-  --pastry-shadow-pressed:
-    inset 0 2px 6px rgba(104, 58, 8, 0.28),
-    inset 0 1px 0 rgba(255, 244, 196, 0.72),
-    inset 0 0 0 1px rgba(142, 78, 0, 0.62),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.58),
-    0 1px 2px rgba(86, 56, 16, 0.12);
-  --pastry-medallion-bg:
-    radial-gradient(
-      circle at 29% 20%,
-      rgba(255, 255, 245, 0.98) 0%,
-      rgba(255, 238, 170, 0.7) 18%,
-      rgba(255, 255, 255, 0) 42%
-    ),
-    linear-gradient(180deg, #fff3bb 0%, #ffd45a 24%, #e49a12 45%, #a85d00 63%, #653000 100%);
-  --pastry-danger-tint: linear-gradient(
-    180deg,
-    rgba(255, 220, 210, 0.22),
-    rgba(210, 120, 100, 0.12) 55%,
-    rgba(178, 137, 66, 0.08) 100%
-  );
-  --pastry-danger-border: rgba(168, 72, 48, 0.72);
-  --pastry-danger-glow: 0 0 18px rgba(210, 120, 90, 0.18);
-  --pastry-focus-ring: 0 0 0 2px rgba(255, 248, 230, 0.95), 0 0 0 4px rgba(217, 171, 88, 0.58);
-  --pastry-texture-size: 180px 120px;
-  --pastry-texture-size-sm: 150px 96px;
-  --joy-pearl-shadow: var(--pastry-shadow-base);
+  /* aliases for legacy inline vars */
+  --u-btn-pearl-texture: none;
+  --pastry-pearl-texture: none;
+  --real-pearl-texture: none;
+  --pastry-gold-border: var(--btn-border-soft);
+  --pastry-gold-border-soft: rgba(214, 162, 58, 0.46);
+  --pastry-focus-ring: var(--btn-focus-ring);
+  --pastry-shadow-base: var(--btn-shadow-outer), var(--btn-inner-light), var(--btn-inner-gold);
+  --pastry-shadow-primary: var(--btn-shadow-hover), var(--btn-inner-light), var(--btn-inner-gold);
+  --pastry-shadow-pressed: var(--btn-shadow-pressed);
+  --pastry-medallion-bg: var(--btn-medallion-bg);
+  --pastry-danger-border: rgba(206, 92, 72, 0.42);
+  --pastry-danger-glow: 0 0 12px rgba(210, 120, 90, 0.12);
+  --pastry-danger-tint: linear-gradient(145deg, rgba(255, 248, 245, 0.96), rgba(255, 226, 218, 0.78));
+  --pastry-surface-bg: var(--btn-pearl-bg);
+  --pastry-pearl-overlay: none;
+  --pastry-pearl-shimmer: none;
+  --u-btn-border: var(--btn-border-soft);
+  --u-btn-h: var(--btn-height-md);
+  --u-btn-small-h: var(--btn-height-sm);
+  --u-btn-radius: var(--btn-radius-lg);
+  --u-btn-icon: var(--btn-icon-md);
+  --u-btn-icon-small: var(--btn-icon-sm);
+  --u-btn-shadow: var(--pastry-shadow-base);
+  --joy-pearl-shadow: var(--btn-shadow-outer), var(--btn-inner-light);
+  --joy-size: 188px;
+  --joy-center-size: 72px;
+
+  /* Бегунки слайдеров — мини-бляшки в стиле u-btn__icon */
+  --slider-track-h: 16px;
+  --slider-thumb-size: 22px;
+  --slider-thumb-border: 1.5px solid rgba(255, 230, 150, 0.9);
+  --slider-thumb-bg:
+    radial-gradient(ellipse 88% 62% at 34% 22%, rgba(255, 255, 255, 0.96) 0%, rgba(255, 248, 210, 0.52) 36%, transparent 72%),
+    radial-gradient(ellipse 92% 68% at 50% 100%, rgba(45, 22, 0, 0.34) 0%, transparent 74%),
+    var(--btn-medallion-bg);
+  --slider-thumb-shadow:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.98),
+    inset 0 -3px 6px rgba(55, 28, 0, 0.46),
+    0 2px 5px rgba(55, 30, 0, 0.3),
+    0 0 0 0.5px rgba(255, 230, 150, 0.42);
+  --slider-thumb-shadow-hover:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.98),
+    inset 0 -3px 6px rgba(55, 28, 0, 0.42),
+    0 3px 8px rgba(75, 43, 8, 0.34),
+    0 0 0 0.5px rgba(255, 230, 150, 0.55);
+  --slider-thumb-shadow-active:
+    inset 0 2px 5px rgba(55, 28, 0, 0.38),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.72),
+    0 1px 3px rgba(55, 30, 0, 0.22);
 }
 
-/* ---------- shared pearl surface ---------- */
-.pastry-pearl-surface,
-.pastry-btn,
-.pastry-btn.pastry-btn,
-.btn.u-btn,
-.file-proxy.u-btn {
-  --pastry-surface-bg:
-    var(--pastry-pearl-overlay),
-    var(--pastry-pearl-shimmer),
-    var(--u-btn-pearl-texture) center / var(--pastry-texture-size) repeat;
-}
-
+/* ========== Base pill button ========== */
 .pastry-btn,
 .btn.u-btn,
-.file-proxy.u-btn {
+.file-proxy.u-btn,
+button.btn,
+.action-btn,
+.primary-btn,
+.secondary-btn {
   position: relative !important;
   isolation: isolate !important;
-  border-radius: var(--btn-radius-xl) !important;
-  border: 1px solid var(--pastry-gold-border) !important;
-  background: var(--pastry-surface-bg) !important;
+  display: grid !important;
+  grid-template-columns: var(--btn-icon-md) minmax(0, 1fr) !important;
+  grid-template-rows: auto !important;
+  align-items: center !important;
+  justify-items: stretch !important;
+  gap: 0 !important;
+  box-sizing: border-box !important;
+  min-height: var(--btn-height-md) !important;
+  height: auto !important;
+  padding: 4px 8px 4px 3px !important;
+  border-radius: var(--btn-radius-lg) !important;
+  border: 1px solid var(--btn-border-soft) !important;
+  background: var(--btn-pearl-bg) !important;
+  color: var(--btn-text-main) !important;
+  font-family: inherit !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.01em !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  overflow: visible !important;
   box-shadow: var(--pastry-shadow-base) !important;
   transition:
     transform var(--btn-transition),
     box-shadow var(--btn-transition),
-    filter var(--btn-transition),
+    border-color var(--btn-transition),
+    background var(--btn-transition),
     opacity var(--btn-transition) !important;
 }
 
@@ -124,60 +164,77 @@
   inset: 2px 4px auto 4px !important;
   height: 42% !important;
   border-radius: inherit !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.08)) !important;
   pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.pastry-btn > *,
+.btn.u-btn > *,
+.file-proxy.u-btn > * {
+  position: relative !important;
   z-index: 1 !important;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.52) 0%,
-    rgba(255, 255, 255, 0.08) 72%,
-    transparent 100%
-  ) !important;
-  opacity: 0.78 !important;
+}
+
+.btn.u-btn:not(.u-btn--icon-only):not(.fab-settings) > .u-btn__icon,
+.file-proxy.u-btn:not(.u-btn--icon-only) > .u-btn__icon {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  justify-self: start !important;
+}
+
+.btn.u-btn:not(.u-btn--icon-only):not(.fab-settings) > .u-btn__label,
+.file-proxy.u-btn:not(.u-btn--icon-only) > .u-btn__label {
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+  justify-self: center !important;
+  align-self: center !important;
+  padding-left: calc(var(--btn-icon-md) + 3px) !important;
+  padding-right: 3px !important;
 }
 
 .pastry-btn:hover:not(:disabled),
 .btn.u-btn:hover:not(:disabled),
 .file-proxy.u-btn:hover:not(:disabled) {
   transform: translateY(-1px) !important;
-  filter: saturate(1.04) brightness(1.02) !important;
-  box-shadow: var(--pastry-shadow-base), 0 0 16px rgba(217, 171, 88, 0.16) !important;
+  border-color: var(--btn-border-bright) !important;
+  box-shadow: var(--btn-shadow-hover), var(--btn-inner-light), var(--btn-inner-gold) !important;
 }
 
 .pastry-btn:active:not(:disabled),
 .btn.u-btn:active:not(:disabled),
 .file-proxy.u-btn:active:not(:disabled) {
   transform: translateY(1px) !important;
-  filter: saturate(0.98) brightness(0.99) !important;
-  box-shadow: var(--pastry-shadow-pressed) !important;
+  box-shadow: var(--btn-shadow-pressed) !important;
 }
 
 .pastry-btn:focus-visible,
 .btn.u-btn:focus-visible,
 .file-proxy.u-btn:focus-visible {
   outline: none !important;
-  box-shadow: var(--pastry-shadow-base), var(--pastry-focus-ring) !important;
+  box-shadow: var(--btn-focus-ring), var(--btn-shadow-hover), var(--btn-inner-light) !important;
 }
 
 .pastry-btn:disabled,
 .pastry-btn[aria-disabled="true"],
 .btn.u-btn:disabled,
 .file-proxy.u-btn:disabled {
-  opacity: 0.58 !important;
-  filter: saturate(0.82) brightness(0.96) !important;
+  opacity: 0.52 !important;
+  color: var(--btn-text-disabled) !important;
   cursor: not-allowed !important;
   pointer-events: none !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 232, 0.72),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.72),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.42),
-    0 2px 6px rgba(86, 56, 16, 0.08) !important;
+  transform: none !important;
+  filter: grayscale(0.25) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 2px 6px rgba(90, 70, 50, 0.08) !important;
 }
 
-/* ---------- variants ---------- */
+/* ========== Primary ========== */
 .pastry-btn--primary,
 .btn-save.u-btn,
 .btn-add.u-btn,
 .btn-main-active.u-btn {
+  min-height: var(--btn-height-lg) !important;
+  border-color: var(--btn-border-bright) !important;
   box-shadow: var(--pastry-shadow-primary) !important;
 }
 
@@ -185,407 +242,712 @@
 .btn-save.u-btn:hover:not(:disabled),
 .btn-add.u-btn:hover:not(:disabled),
 .btn-main-active.u-btn:hover:not(:disabled) {
-  box-shadow: var(--pastry-shadow-primary), 0 0 24px rgba(217, 171, 88, 0.22) !important;
+  box-shadow: var(--btn-shadow-hover), var(--btn-inner-light), var(--btn-inner-gold) !important;
 }
 
+/* ========== Secondary / outline ========== */
 .pastry-btn--secondary,
 .btn-category.u-btn,
 .btn-theme.u-btn,
 .file-proxy.u-btn {
-  box-shadow: var(--pastry-shadow-base) !important;
+  min-height: var(--btn-height-sm) !important;
+  padding: 4px 8px 4px 3px !important;
+  border: 1px solid rgba(214, 162, 58, 0.46) !important;
+  background: var(--btn-pearl-bg-secondary) !important;
+  box-shadow: 0 3px 8px rgba(91, 54, 22, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+}
+
+.pastry-btn--secondary:hover:not(:disabled),
+.btn-category.u-btn:hover:not(:disabled),
+.btn-theme.u-btn:hover:not(:disabled),
+.file-proxy.u-btn:hover:not(:disabled) {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 239, 210, 0.9)) !important;
+  border-color: rgba(214, 162, 58, 0.75) !important;
 }
 
 .pastry-btn--tertiary,
 .btn-search.u-btn {
-  min-height: var(--btn-height-small) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 232, 0.92),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.88),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.68),
-    0 2px 8px rgba(86, 56, 16, 0.1) !important;
+  min-height: var(--btn-height-sm) !important;
+  font-size: 14px !important;
 }
 
-.pastry-btn--tertiary .u-btn__icon,
-.btn-search.u-btn .u-btn__icon {
-  width: 28px !important;
-  height: 28px !important;
-  min-width: 28px !important;
-  font-size: 15px !important;
-}
-
+/* ========== Danger ========== */
 .pastry-btn--danger,
-.btn-delete.u-btn {
-  border-color: var(--pastry-danger-border) !important;
-  background:
-    var(--pastry-danger-tint),
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / var(--pastry-texture-size) repeat !important;
-  box-shadow: var(--pastry-shadow-base), var(--pastry-danger-glow) !important;
+.btn-delete.u-btn:not(.u-btn--icon-only) {
+  border-color: rgba(206, 92, 72, 0.42) !important;
+  background: var(--pastry-danger-tint), var(--btn-pearl-bg-secondary) !important;
+  color: #8b2f24 !important;
+  box-shadow: 0 4px 10px rgba(91, 54, 22, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.88) !important;
 }
 
-.pastry-btn--danger .u-btn__icon,
-.btn-delete.u-btn .u-btn__icon {
-  border-color: rgba(205, 120, 80, 0.72) !important;
-  color: #9b3a18 !important;
-  -webkit-text-fill-color: #9b3a18 !important;
+.pastry-btn--danger:hover:not(:disabled),
+.btn-delete.u-btn:not(.u-btn--icon-only):hover:not(:disabled) {
+  border-color: rgba(206, 92, 72, 0.68) !important;
+  background: linear-gradient(145deg, rgba(255, 250, 247, 0.98), rgba(255, 214, 205, 0.86)) !important;
 }
 
-.pastry-btn--danger .u-svg-fill,
-.btn-delete.u-btn .u-svg-fill {
-  fill: url(#uGoldFill) !important;
-}
-
-.pastry-btn--icon,
-.u-btn--icon-only {
-  border-radius: 50% !important;
-  padding: 6px !important;
-  justify-content: center !important;
-}
-
-.pastry-btn--icon.u-btn--icon-only,
-.btn-delete.u-btn--icon-only,
-.u-btn--icon-only {
-  background:
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
-}
-
-/* ---------- medallion / label aliases ---------- */
+/* ========== Gold icon medallion — детальный глянец ========== */
 .pastry-btn__medallion,
 .u-btn__icon {
   position: relative !important;
-  z-index: 2 !important;
   flex: 0 0 auto !important;
-  width: var(--btn-medallion-size) !important;
-  height: var(--btn-medallion-size) !important;
-  min-width: var(--btn-medallion-size) !important;
-  margin-left: 2px !important;
+  width: var(--btn-icon-md) !important;
+  height: var(--btn-icon-md) !important;
+  min-width: var(--btn-icon-md) !important;
+  margin: 0 !important;
   border-radius: 50% !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: 1px solid rgba(205, 151, 46, 0.68) !important;
-  background: var(--pastry-medallion-bg) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 246, 0.98),
-    inset 0 2px 0 rgba(255, 236, 176, 0.84),
-    inset 0 0 0 1px rgba(255, 225, 128, 0.84),
-    inset 0 0 0 2px rgba(184, 112, 10, 0.5),
-    0 1px 0 rgba(255, 244, 210, 0.62),
-    0 2px 5px rgba(75, 43, 8, 0.24) !important;
-  color: #8b4700 !important;
-  -webkit-text-fill-color: #8b4700 !important;
-  font-size: 18px !important;
-  font-weight: 900 !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  border: 1.5px solid rgba(255, 230, 150, 0.88) !important;
+  background: var(--btn-medallion-bg) !important;
+  color: #120a04 !important;
+  -webkit-text-fill-color: #120a04 !important;
+  font-size: 0 !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
+  line-height: 1 !important;
   pointer-events: none !important;
+  -webkit-font-smoothing: antialiased !important;
+  filter: saturate(1.12) contrast(1.06) !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.98),
+    inset 0 -4px 8px rgba(55, 28, 0, 0.48),
+    0 2px 6px rgba(55, 30, 0, 0.32),
+    0 0 0 0.5px rgba(255, 230, 150, 0.45) !important;
+  text-shadow: none !important;
 }
 
-.u-btn--icon-only .u-btn__icon,
-.pastry-btn--icon .pastry-btn__medallion {
-  width: 30px !important;
-  height: 30px !important;
-  min-width: 30px !important;
-  margin: 0 !important;
-}
-
-.pastry-btn__label,
-.u-btn__label {
-  position: relative !important;
+.u-btn__icon::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 1px 1px auto 1px !important;
+  height: 56% !important;
+  border-radius: 50% !important;
+  background: var(--btn-medallion-gloss) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
   z-index: 2 !important;
 }
 
-/* ---------- pearl sliders ---------- */
+.u-btn__icon::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: auto 2px 2px 2px !important;
+  height: 44% !important;
+  border-radius: 50% !important;
+  background: var(--btn-medallion-shade) !important;
+  opacity: 0.82 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.u-btn__icon .u-med-svg,
+.u-btn__icon > svg {
+  position: relative !important;
+  z-index: 4 !important;
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  flex: 0 0 auto !important;
+  color: #120a04 !important;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 252, 235, 0.95))
+    drop-shadow(0 0 1px rgba(255, 255, 255, 0.65)) !important;
+  shape-rendering: geometricPrecision !important;
+}
+
+.pastry-btn--danger .u-btn__icon,
+.btn-delete.u-btn .u-btn__icon {
+  background: radial-gradient(circle at 34% 24%, #ffece6 0%, #ef9880 42%, #cf5840 68%, #962818 100%) !important;
+  border-color: rgba(206, 92, 72, 0.62) !important;
+  color: #3a0c04 !important;
+  -webkit-text-fill-color: #3a0c04 !important;
+}
+
+.pastry-btn--danger .u-btn__icon .u-med-svg,
+.btn-delete.u-btn .u-btn__icon .u-med-svg,
+.pastry-btn--danger .u-btn__icon > svg,
+.btn-delete.u-btn .u-btn__icon > svg {
+  color: #3a0c04 !important;
+  filter: drop-shadow(0 1px 0 rgba(255, 230, 220, 0.9)) !important;
+}
+
+/* ========== Readable brown label text (HTML, не SVG) ========== */
+.pastry-btn__label,
+.u-btn__label {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding: 1px 4px 1px 0 !important;
+  color: var(--btn-text-main) !important;
+  -webkit-text-fill-color: var(--btn-text-main) !important;
+  font-weight: 600 !important;
+  font-size: clamp(12.5px, 1.02vw, 14px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0.01em !important;
+  text-align: center !important;
+  white-space: normal !important;
+  text-shadow: none !important;
+  background: none !important;
+  filter: none !important;
+  overflow: visible !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+}
+
+.u-btn__label--multiline {
+  font-size: clamp(11.5px, 0.98vw, 13px) !important;
+  line-height: 1.1 !important;
+}
+
+.recipe-action-grid .btn.u-btn,
+.recipe-action-grid .file-proxy.u-btn {
+  height: auto !important;
+  min-height: 42px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+.recipe-action-grid .u-btn__label {
+  font-size: 14px !important;
+  line-height: 1.12 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.assembly-panel + .grid .btn.u-btn,
+#ingredientBaseBlock .base-expanded-actions .btn.u-btn,
+#ingredientBaseBlock .base-expanded-actions .file-proxy.u-btn {
+  height: auto !important;
+  min-height: 44px !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  align-items: center !important;
+}
+
+.assembly-panel + .grid .u-btn__label,
+#ingredientBaseBlock .base-expanded-actions .u-btn__label {
+  font-size: clamp(11.5px, 0.92vw, 12.5px) !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+#ingredientBaseBlock .base-expanded-actions .btn.u-btn[onclick*="clearIngredientBase"],
+#ingredientBaseBlock .base-expanded-actions button.btn-delete.u-btn {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#ingredientBaseBlock .base-expanded-actions .btn.u-btn[onclick*="clearIngredientBase"] .u-btn__label,
+#ingredientBaseBlock .base-expanded-actions button.btn-delete.u-btn .u-btn__label {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: var(--btn-text-main) !important;
+  -webkit-text-fill-color: var(--btn-text-main) !important;
+}
+
+.u-svg-text {
+  font-family: inherit !important;
+  font-weight: 600 !important;
+  fill: var(--btn-text-main) !important;
+  stroke: none !important;
+  paint-order: normal !important;
+}
+
+.u-svg-edge,
+.u-svg-gloss {
+  display: none !important;
+}
+
+.u-svg-fill {
+  fill: var(--btn-text-main) !important;
+  stroke: none !important;
+}
+
+.pastry-btn--danger .u-svg-fill,
+.btn-delete.u-btn .u-svg-fill {
+  fill: #8b2f24 !important;
+}
+
+/* ========== Icon-only round buttons ========== */
+.pastry-btn--icon,
+.u-btn--icon-only,
+.icon-btn,
+.round-btn,
+.circle-btn {
+  display: inline-flex !important;
+  grid-template-columns: none !important;
+  width: 42px !important;
+  min-width: 42px !important;
+  max-width: 42px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.98), rgba(255, 241, 218, 0.88) 46%, rgba(238, 205, 154, 0.75)) !important;
+  color: var(--btn-gold-dark) !important;
+}
+
+.u-btn--icon-only .u-btn__icon,
+.pastry-btn--icon .u-btn__icon {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+}
+
+.u-btn--icon-only .u-btn__label {
+  display: none !important;
+}
+
+.u-btn--small {
+  min-height: var(--btn-height-sm) !important;
+  height: var(--btn-height-sm) !important;
+  font-size: 14px !important;
+  padding-right: 14px !important;
+}
+
+.u-btn--small .u-btn__icon {
+  width: var(--btn-icon-sm) !important;
+  height: var(--btn-icon-sm) !important;
+  min-width: var(--btn-icon-sm) !important;
+  font-size: 13px !important;
+}
+
+/* Settings FAB — левый нижний угол, не перекрывает кнопки рецепта */
+.fab-settings.u-btn {
+  position: fixed !important;
+  left: 24px !important;
+  right: auto !important;
+  bottom: 20px !important;
+  z-index: 1200 !important;
+  display: inline-flex !important;
+  grid-template-columns: none !important;
+  width: 58px !important;
+  min-width: 58px !important;
+  max-width: 58px !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 50% !important;
+  overflow: visible !important;
+  box-shadow:
+    var(--btn-shadow-outer),
+    var(--btn-inner-light),
+    var(--btn-inner-gold),
+    0 6px 20px rgba(80, 50, 25, 0.22) !important;
+}
+
+.fab-settings.u-btn > .u-btn__icon {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+}
+
+.fab-settings.u-btn > .u-btn__icon .u-med-svg,
+.fab-settings.u-btn > .u-btn__icon > svg {
+  width: 22px !important;
+  height: 22px !important;
+  color: #120a04 !important;
+}
+
+.fab-settings.u-btn > .u-btn__label {
+  display: none !important;
+}
+
+/* ========== Filter chips — книга рецептов (без grid-layout кнопки) ========== */
+.recipe-filter {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  margin: 0 0 12px !important;
+  align-items: stretch !important;
+}
+
+.recipe-filter-btn,
+.recipe-filter-btn.pastry-btn,
+.recipe-filter-btn.pastry-btn--tertiary {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 36px !important;
+  height: auto !important;
+  padding: 6px 8px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(214, 162, 58, 0.42) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 244, 226, 0.82)) !important;
+  color: var(--btn-text-main) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  hyphens: auto !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 5px rgba(80, 50, 25, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.92) !important;
+  transition: transform var(--btn-transition), box-shadow var(--btn-transition), background var(--btn-transition) !important;
+}
+
+.recipe-filter-btn::before,
+.recipe-filter-btn.pastry-btn::before {
+  display: none !important;
+}
+
+.chip,
+.filter-chip,
+.category-filter,
+.tab-pill {
+  min-height: 34px !important;
+  padding: 5px 10px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(214, 162, 58, 0.42) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 244, 226, 0.82)) !important;
+  color: var(--btn-text-main) !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.12 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+}
+
+.recipe-filter-btn[data-recipe-filter="all"] {
+  grid-column: 1 / -1 !important;
+}
+
+.recipe-filter-btn:hover,
+.chip:hover,
+.filter-chip:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(214, 162, 58, 0.55) !important;
+}
+
+.recipe-filter-btn:active,
+.chip:active {
+  transform: translateY(1px) !important;
+  box-shadow: var(--btn-shadow-pressed) !important;
+}
+
+.recipe-filter-btn.active,
+.chip.active,
+.chip.is-active,
+.filter-chip.active,
+.category-filter.active,
+.tab-pill.active {
+  border-color: rgba(181, 119, 24, 0.8) !important;
+  background: linear-gradient(145deg, #fff4d5, #edc574 48%, #d49a32) !important;
+  color: var(--btn-text-main) !important;
+  box-shadow: 0 4px 10px rgba(120, 72, 28, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.72) !important;
+}
+
+.recipe-filter-btn:focus-visible {
+  outline: none !important;
+  box-shadow: var(--btn-focus-ring), 0 2px 5px rgba(80, 50, 25, 0.08) !important;
+}
+
+/* ========== Recipe section accordion rows ========== */
+.recipe-editor-panel details.group,
+details.group {
+  border: 1px solid rgba(214, 162, 58, 0.24) !important;
+  border-radius: var(--btn-radius-md) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(255, 248, 238, 0.78)) !important;
+  box-shadow: 0 3px 8px rgba(80, 50, 25, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+.recipe-editor-panel details.group > summary,
+details.group > summary,
+.section-header,
+.accordion-header,
+.collapse-row {
+  min-height: 46px !important;
+  padding: 10px 4px !important;
+  color: var(--btn-text-main) !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  list-style: none !important;
+}
+
+.recipe-editor-panel details.group > summary:hover,
+details.group > summary:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 240, 216, 0.82)) !important;
+  border-radius: calc(var(--btn-radius-md) - 2px) !important;
+}
+
+.recipe-editor-panel details.group[open] > summary {
+  border-bottom: 1px solid rgba(214, 162, 58, 0.18) !important;
+}
+
+/* ========== Form controls harmony ========== */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--btn-gold-main) !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+select,
+textarea {
+  border-radius: 16px !important;
+  border: 1px solid rgba(214, 162, 58, 0.22) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: var(--btn-text-main) !important;
+  box-shadow: inset 0 1px 3px rgba(80, 50, 25, 0.06), 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: rgba(214, 162, 58, 0.55) !important;
+  box-shadow: var(--btn-focus-ring), inset 0 1px 3px rgba(80, 50, 25, 0.06) !important;
+}
+
+/* ========== Pearl sliders — бегунок как мини-золотая бляшка ========== */
 .pearl-slider-wrap label {
   font-size: 12px !important;
-  font-weight: 700 !important;
-  color: #6f4b25 !important;
-  text-align: center !important;
+  font-weight: 600 !important;
+  color: var(--btn-text-soft) !important;
 }
 
 .pearl-slider,
 input[type="range"].pearl-slider,
 #customThemeOverlay,
-.settings-panel input[type="range"]:not(.print-hidden-range) {
-  width: 100% !important;
+.settings-panel input[type="range"]:not(.print-hidden-range),
+.recipe-photo-controls-above input[type="range"].pearl-slider,
+.recipe-theme-opacity-slider .pearl-slider {
   appearance: none !important;
   -webkit-appearance: none !important;
-  height: 14px !important;
-  border-radius: var(--btn-radius-xl) !important;
-  accent-color: #c79f5a !important;
+  width: 100% !important;
+  height: var(--slider-track-h) !important;
+  min-height: var(--slider-track-h) !important;
+  border-radius: var(--btn-radius-lg) !important;
+  accent-color: var(--btn-gold-main) !important;
   cursor: pointer !important;
-  background:
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
-  border: 1px solid var(--pastry-gold-border) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 232, 0.98),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.54),
-    0 2px 0 rgba(176, 121, 32, 0.22),
-    0 5px 12px rgba(86, 56, 16, 0.1) !important;
-  transition: box-shadow var(--btn-transition), filter var(--btn-transition) !important;
-}
-
-.pearl-slider:hover {
-  filter: saturate(1.03) brightness(1.015) !important;
-}
-
-.pearl-slider:focus-visible {
-  outline: none !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 232, 0.98),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.54),
-    var(--pastry-focus-ring) !important;
-}
-
-.pearl-slider:disabled {
-  opacity: 0.55 !important;
-  cursor: not-allowed !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .pearl-slider::-webkit-slider-runnable-track,
-.pearl-slider::-moz-range-track {
-  height: 14px !important;
-  border-radius: var(--btn-radius-xl) !important;
-  background:
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
-  border: 1px solid var(--pastry-gold-border-soft) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 232, 0.98),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.48) !important;
+input[type="range"].pearl-slider::-webkit-slider-runnable-track,
+#customThemeOverlay::-webkit-slider-runnable-track,
+.settings-panel input[type="range"]:not(.print-hidden-range)::-webkit-slider-runnable-track,
+.recipe-theme-opacity-slider .pearl-slider::-webkit-slider-runnable-track {
+  height: var(--slider-track-h) !important;
+  border-radius: var(--btn-radius-lg) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 246, 232, 0.82)) !important;
+  border: 1px solid var(--btn-border-soft) !important;
+  box-shadow: inset 0 1px 3px rgba(80, 50, 25, 0.08) !important;
+}
+
+.pearl-slider::-moz-range-track,
+input[type="range"].pearl-slider::-moz-range-track,
+#customThemeOverlay::-moz-range-track,
+.settings-panel input[type="range"]:not(.print-hidden-range)::-moz-range-track,
+.recipe-theme-opacity-slider .pearl-slider::-moz-range-track {
+  height: var(--slider-track-h) !important;
+  border-radius: var(--btn-radius-lg) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 246, 232, 0.82)) !important;
+  border: 1px solid var(--btn-border-soft) !important;
+  box-shadow: inset 0 1px 3px rgba(80, 50, 25, 0.08) !important;
 }
 
 .pearl-slider::-webkit-slider-thumb,
-.pearl-slider::-moz-range-thumb {
+input[type="range"].pearl-slider::-webkit-slider-thumb,
+#customThemeOverlay::-webkit-slider-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range)::-webkit-slider-thumb,
+.recipe-theme-opacity-slider .pearl-slider::-webkit-slider-thumb {
   appearance: none !important;
   -webkit-appearance: none !important;
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--slider-thumb-size) !important;
+  height: var(--slider-thumb-size) !important;
+  margin-top: calc((var(--slider-track-h) - var(--slider-thumb-size)) / 2) !important;
   border-radius: 50% !important;
-  margin-top: -6px !important;
+  border: var(--slider-thumb-border) !important;
+  background: var(--slider-thumb-bg) !important;
+  box-shadow: var(--slider-thumb-shadow) !important;
+  filter: saturate(1.12) contrast(1.06) !important;
   cursor: grab !important;
-  background: var(--pastry-medallion-bg) !important;
-  border: 1px solid rgba(205, 151, 46, 0.78) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 246, 0.98),
-    inset 0 0 0 1px rgba(255, 225, 128, 0.84),
-    inset 0 0 0 2px rgba(184, 112, 10, 0.5),
-    0 2px 6px rgba(75, 43, 8, 0.26) !important;
-  transition: transform var(--btn-transition), box-shadow var(--btn-transition) !important;
+  transition:
+    box-shadow var(--btn-transition),
+    transform var(--btn-transition),
+    filter var(--btn-transition) !important;
 }
 
-.pearl-slider::-webkit-slider-thumb:active,
-.pearl-slider::-moz-range-thumb:active {
+.pearl-slider::-moz-range-thumb,
+input[type="range"].pearl-slider::-moz-range-thumb,
+#customThemeOverlay::-moz-range-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range)::-moz-range-thumb,
+.recipe-theme-opacity-slider .pearl-slider::-moz-range-thumb {
+  appearance: none !important;
+  width: var(--slider-thumb-size) !important;
+  height: var(--slider-thumb-size) !important;
+  border-radius: 50% !important;
+  border: var(--slider-thumb-border) !important;
+  background: var(--slider-thumb-bg) !important;
+  box-shadow: var(--slider-thumb-shadow) !important;
+  filter: saturate(1.12) contrast(1.06) !important;
+  cursor: grab !important;
+  transition:
+    box-shadow var(--btn-transition),
+    transform var(--btn-transition),
+    filter var(--btn-transition) !important;
+}
+
+.pearl-slider:hover::-webkit-slider-thumb,
+input[type="range"].pearl-slider:hover::-webkit-slider-thumb,
+#customThemeOverlay:hover::-webkit-slider-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range):hover::-webkit-slider-thumb,
+.recipe-theme-opacity-slider .pearl-slider:hover::-webkit-slider-thumb {
+  box-shadow: var(--slider-thumb-shadow-hover) !important;
+  filter: saturate(1.16) contrast(1.08) !important;
+}
+
+.pearl-slider:hover::-moz-range-thumb,
+input[type="range"].pearl-slider:hover::-moz-range-thumb,
+#customThemeOverlay:hover::-moz-range-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range):hover::-moz-range-thumb,
+.recipe-theme-opacity-slider .pearl-slider:hover::-moz-range-thumb {
+  box-shadow: var(--slider-thumb-shadow-hover) !important;
+  filter: saturate(1.16) contrast(1.08) !important;
+}
+
+.pearl-slider:active::-webkit-slider-thumb,
+.pearl-slider:focus-visible::-webkit-slider-thumb,
+input[type="range"].pearl-slider:active::-webkit-slider-thumb,
+input[type="range"].pearl-slider:focus-visible::-webkit-slider-thumb,
+#customThemeOverlay:active::-webkit-slider-thumb,
+#customThemeOverlay:focus-visible::-webkit-slider-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range):active::-webkit-slider-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range):focus-visible::-webkit-slider-thumb,
+.recipe-theme-opacity-slider .pearl-slider:active::-webkit-slider-thumb,
+.recipe-theme-opacity-slider .pearl-slider:focus-visible::-webkit-slider-thumb {
   cursor: grabbing !important;
+  box-shadow: var(--slider-thumb-shadow-active) !important;
   transform: scale(0.96) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(104, 58, 8, 0.22),
-    inset 0 0 0 1px rgba(255, 225, 128, 0.72),
-    0 1px 3px rgba(75, 43, 8, 0.2) !important;
 }
 
-.pearl-slider::-moz-range-thumb {
-  margin-top: 0 !important;
+.pearl-slider:active::-moz-range-thumb,
+.pearl-slider:focus-visible::-moz-range-thumb,
+input[type="range"].pearl-slider:active::-moz-range-thumb,
+input[type="range"].pearl-slider:focus-visible::-moz-range-thumb,
+#customThemeOverlay:active::-moz-range-thumb,
+#customThemeOverlay:focus-visible::-moz-range-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range):active::-moz-range-thumb,
+.settings-panel input[type="range"]:not(.print-hidden-range):focus-visible::-moz-range-thumb,
+.recipe-theme-opacity-slider .pearl-slider:active::-moz-range-thumb,
+.recipe-theme-opacity-slider .pearl-slider:focus-visible::-moz-range-thumb {
+  cursor: grabbing !important;
+  box-shadow: var(--slider-thumb-shadow-active) !important;
+  transform: scale(0.96) !important;
 }
 
-/* ---------- pearl joysticks (layout + chrome) ---------- */
-.pearl-joystick {
-  --joy-size: 176px;
-  position: relative;
-  width: var(--joy-size);
-  height: var(--joy-size);
-  margin: 0 auto;
-  border-radius: 50%;
+.pearl-slider:focus-visible,
+input[type="range"].pearl-slider:focus-visible,
+#customThemeOverlay:focus-visible,
+.settings-panel input[type="range"]:not(.print-hidden-range):focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.pearl-joystick .joy-cut {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 2px;
-  height: calc(var(--joy-size) - 22px);
-  transform-origin: center;
+.pearl-slider:focus-visible::-webkit-slider-runnable-track,
+input[type="range"].pearl-slider:focus-visible::-webkit-slider-runnable-track,
+#customThemeOverlay:focus-visible::-webkit-slider-runnable-track,
+.settings-panel input[type="range"]:not(.print-hidden-range):focus-visible::-webkit-slider-runnable-track,
+.recipe-theme-opacity-slider .pearl-slider:focus-visible::-webkit-slider-runnable-track {
+  box-shadow: var(--btn-focus-ring), inset 0 1px 3px rgba(80, 50, 25, 0.08) !important;
 }
 
-.pearl-joystick .joy-cut.cut-v {
-  transform: translate(-50%, -50%);
-}
-
-.pearl-joystick .joy-cut.cut-h {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.pearl-joystick .joy-cut.cut-d1 {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.pearl-joystick .joy-cut.cut-d2 {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.joy-dir,
-.joy-half {
-  position: absolute;
-  cursor: pointer;
-  font-family: var(--font-ui, "Segoe UI", system-ui, sans-serif);
-}
-
-.joy-dir {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  font-size: 27px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.joy-up {
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.joy-right {
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.joy-down {
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.joy-left {
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.joy-up:hover {
-  transform: translateX(-50%) translateY(-1px);
-}
-
-.joy-right:hover {
-  transform: translateY(-50%) translateY(-1px);
-}
-
-.joy-down:hover {
-  transform: translateX(-50%) translateY(-1px);
-}
-
-.joy-left:hover {
-  transform: translateY(-50%) translateY(-1px);
-}
-
-.joy-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 78px;
-  height: 78px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.joy-half {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  font-size: 24px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.joy-half:first-child {
-  border-right: 2px solid rgba(166, 126, 65, 0.68);
-}
-
-.rotate-left,
-.rotate-right {
-  font-size: 30px;
-}
-
-.zoom-out,
-.zoom-in {
-  font-size: 25px;
-}
-
-.pearl-slider-wrap {
-  margin-top: 8px;
-}
-
-.joystick-title span {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--muted, #8a7358);
-  text-align: right;
-  line-height: 1.2;
-}
-
-@media (max-width: 760px) {
-  .pearl-joystick {
-    --joy-size: 160px;
-  }
-}
-
+/* ========== Joystick (pearl-gold ring + center split) ========== */
 .joystick-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
   padding: 12px !important;
   border-radius: 24px !important;
-  background:
-    linear-gradient(145deg, rgba(255, 250, 244, 0.82), rgba(239, 228, 213, 0.76)),
-    var(--u-btn-pearl-texture) center / 220px 140px repeat !important;
+  background: linear-gradient(145deg, rgba(255, 250, 244, 0.92), rgba(239, 228, 213, 0.82)) !important;
   border: 1px solid var(--pastry-gold-border-soft) !important;
-  box-shadow:
-    8px 8px 18px rgba(120, 100, 80, 0.12),
-    -6px -6px 16px rgba(255, 255, 255, 0.82),
-    inset 2px 2px 5px rgba(255, 255, 255, 0.72) !important;
+  box-shadow: 0 4px 12px rgba(80, 50, 25, 0.08) !important;
+}
+
+.crop-joystick-block {
+  width: 100% !important;
+  max-width: 290px !important;
+  margin-inline: auto !important;
 }
 
 .joystick-title {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  margin: 0 0 2px !important;
   font-size: 14px !important;
-  font-weight: 800 !important;
-  color: #6f4b25 !important;
+  font-weight: 700 !important;
+  color: var(--btn-text-main) !important;
+  line-height: 1.25 !important;
+}
+
+.joystick-title span {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: var(--btn-text-soft) !important;
+  text-align: right !important;
+  line-height: 1.35 !important;
 }
 
 .pearl-joystick {
-  isolation: isolate !important;
+  position: relative !important;
+  width: var(--joy-size) !important;
+  height: var(--joy-size) !important;
+  margin: 8px auto 4px !important;
+  border-radius: 50% !important;
   overflow: hidden !important;
-  border: 1px solid var(--pastry-gold-border) !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: repeat(3, 1fr) !important;
+  grid-template-areas:
+    ". up ."
+    "left center right"
+    ". down ." !important;
+  border: 1px solid var(--btn-border-soft) !important;
   background:
-    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.1) 32%, transparent 58%),
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / 200px 150px repeat !important;
+    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.54), transparent 58%),
+    linear-gradient(145deg, var(--btn-pearl-top), var(--btn-pearl-bottom)) !important;
   box-shadow: var(--joy-pearl-shadow) !important;
-  filter: saturate(1.03) contrast(1.02) !important;
+  isolation: isolate !important;
 }
 
 .pearl-joystick::before {
   content: "" !important;
   position: absolute !important;
-  inset: 6px !important;
+  inset: calc((var(--joy-size) - var(--joy-center-size)) / 2) !important;
   border-radius: 50% !important;
-  z-index: 0 !important;
+  border: 1px solid rgba(214, 162, 58, 0.38) !important;
   pointer-events: none !important;
-  background:
-    radial-gradient(circle at 32% 18%, rgba(255, 255, 255, 0.68), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 32%, rgba(255, 210, 232, 0.18) 64%, rgba(255, 255, 255, 0.1)),
-    var(--u-btn-pearl-texture) center / 190px 140px repeat !important;
-  opacity: 0.88 !important;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 245, 214, 0.9),
-    inset 0 0 0 2px rgba(210, 150, 38, 0.6),
-    inset 0 0 22px rgba(255, 255, 255, 0.42) !important;
+  z-index: 1 !important;
 }
 
 .pearl-joystick::after {
@@ -593,129 +955,244 @@ input[type="range"].pearl-slider,
   position: absolute !important;
   inset: 0 !important;
   border-radius: 50% !important;
-  z-index: 1 !important;
+  border: 1px solid rgba(214, 162, 58, 0.22) !important;
   pointer-events: none !important;
-  background:
-    linear-gradient(115deg, transparent 0 46%, rgba(135, 82, 15, 0.32) 46.5% 47.2%, transparent 48%),
-    linear-gradient(65deg, transparent 0 46%, rgba(135, 82, 15, 0.28) 46.5% 47.2%, transparent 48%),
-    linear-gradient(90deg, transparent 0 48.8%, rgba(135, 82, 15, 0.26) 49.1% 50.9%, transparent 51.2%),
-    linear-gradient(0deg, transparent 0 48.8%, rgba(135, 82, 15, 0.26) 49.1% 50.9%, transparent 51.2%) !important;
-  opacity: 0.78 !important;
+  z-index: 2 !important;
 }
 
-.pearl-joystick .joy-cut {
-  background: linear-gradient(90deg, transparent, rgba(119, 72, 11, 0.26), transparent) !important;
-  opacity: 0.62 !important;
-  z-index: 2 !important;
+.joy-cut {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 1.5px !important;
+  margin-left: -0.75px !important;
+  background: linear-gradient(180deg, rgba(214, 162, 58, 0.62), rgba(214, 162, 58, 0.12)) !important;
+  transform-origin: center top !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.joy-cut.cut-v {
+  height: 50% !important;
+  transform: translate(-50%, -100%) !important;
+}
+
+.joy-cut.cut-h {
+  height: 50% !important;
+  transform: translate(-50%, 0) rotate(90deg) !important;
+  transform-origin: center top !important;
+}
+
+.joy-cut.cut-d1 {
+  height: 36% !important;
+  transform: translate(-50%, -100%) rotate(45deg) !important;
+}
+
+.joy-cut.cut-d2 {
+  height: 36% !important;
+  transform: translate(-50%, -100%) rotate(-45deg) !important;
 }
 
 .joy-dir,
 .joy-half {
-  z-index: 4 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   border: none !important;
   background: transparent !important;
-  color: #9b5d00 !important;
-  -webkit-text-fill-color: #9b5d00 !important;
-  text-shadow:
-    0 -1px 0 rgba(255, 241, 170, 0.74),
-    0 1px 0 rgba(104, 48, 0, 0.62),
-    0 2px 3px rgba(48, 23, 0, 0.3) !important;
-  filter: drop-shadow(0 2px 2px rgba(75, 43, 8, 0.18)) !important;
-  transition: transform var(--btn-transition), filter var(--btn-transition), color var(--btn-transition) !important;
+  color: var(--btn-gold-dark) !important;
+  -webkit-text-fill-color: var(--btn-gold-dark) !important;
+  text-shadow: none !important;
+  font-family: inherit !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition:
+    background var(--btn-transition),
+    color var(--btn-transition),
+    transform var(--btn-transition) !important;
 }
+
+.joy-dir {
+  position: relative !important;
+  z-index: 3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 0 !important;
+}
+
+.joy-up { grid-area: up !important; align-items: flex-end !important; padding-bottom: 8px !important; }
+.joy-down { grid-area: down !important; align-items: flex-start !important; padding-top: 8px !important; }
+.joy-left { grid-area: left !important; justify-content: flex-end !important; padding-right: 6px !important; }
+.joy-right { grid-area: right !important; justify-content: flex-start !important; padding-left: 6px !important; }
 
 .joy-dir:hover,
 .joy-half:hover {
-  color: #d89412 !important;
-  -webkit-text-fill-color: #d89412 !important;
-  filter: drop-shadow(0 0 7px rgba(217, 171, 88, 0.46)) drop-shadow(0 2px 2px rgba(75, 43, 8, 0.16)) !important;
+  background: rgba(255, 248, 232, 0.58) !important;
+  color: var(--btn-gold-main) !important;
+  -webkit-text-fill-color: var(--btn-gold-main) !important;
 }
 
 .joy-dir:active,
 .joy-half:active {
-  transform: scale(0.96) !important;
-  color: #8b5a21 !important;
+  transform: scale(0.94) !important;
+  background: rgba(244, 226, 198, 0.82) !important;
 }
 
 .joy-dir:focus-visible,
 .joy-half:focus-visible {
   outline: none !important;
-  box-shadow: var(--pastry-focus-ring) !important;
-  border-radius: 50% !important;
+  box-shadow: inset 0 0 0 2px rgba(214, 162, 58, 0.55) !important;
 }
 
 .joy-center {
-  z-index: 3 !important;
-  border: 1px solid var(--pastry-gold-border) !important;
+  grid-area: center !important;
+  position: relative !important;
+  width: var(--joy-center-size) !important;
+  height: var(--joy-center-size) !important;
+  margin: auto !important;
+  align-self: center !important;
+  justify-self: center !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  z-index: 4 !important;
+  border: 1px solid var(--btn-border-soft) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 241, 218, 0.85)) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 2px 6px rgba(80, 50, 25, 0.1) !important;
+}
+
+.joy-center::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 8% !important;
+  bottom: 8% !important;
+  width: 1px !important;
+  margin-left: -0.5px !important;
+  background: rgba(214, 162, 58, 0.35) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.joy-half {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 19px !important;
+}
+
+.pearl-slider-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 100% !important;
+  padding-block: 4px !important;
+}
+
+html[data-theme="dark"] .joystick-block {
+  background: linear-gradient(145deg, rgba(48, 40, 34, 0.92), rgba(34, 28, 24, 0.88)) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme="dark"] .pearl-joystick {
   background:
-    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.1) 36%, transparent 60%),
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / 130px 80px repeat !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 232, 0.98),
-    inset 0 0 0 1px rgba(255, 244, 196, 0.96),
-    inset 0 0 0 2px rgba(238, 184, 64, 0.8),
-    inset 0 0 0 3px rgba(142, 78, 0, 0.54),
-    0 2px 0 rgba(176, 121, 32, 0.28),
-    0 7px 14px rgba(86, 56, 16, 0.13) !important;
+    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.12), transparent 58%),
+    linear-gradient(145deg, rgba(58, 48, 42, 0.96), rgba(38, 32, 28, 0.94)) !important;
 }
 
-/* ---------- recipe type filter chips ---------- */
-.recipe-filter-btn {
-  border: 1px solid var(--pastry-gold-border) !important;
-  border-radius: var(--btn-radius-xl) !important;
-  padding: 7px 14px !important;
-  min-height: var(--btn-height-small) !important;
-  background:
-    var(--pastry-pearl-overlay),
-    var(--u-btn-pearl-texture) center / var(--pastry-texture-size-sm) repeat !important;
-  color: #8b5a21 !important;
-  font-size: 12px !important;
-  font-weight: 800 !important;
-  cursor: pointer !important;
-  box-shadow: var(--pastry-shadow-base) !important;
-  transition:
-    transform var(--btn-transition),
-    filter var(--btn-transition),
-    box-shadow var(--btn-transition) !important;
+html[data-theme="dark"] .joy-center {
+  background: linear-gradient(145deg, rgba(72, 62, 54, 0.96), rgba(52, 44, 38, 0.92)) !important;
 }
 
-.recipe-filter-btn:hover {
-  transform: translateY(-1px) !important;
-  filter: saturate(1.03) brightness(1.02) !important;
-  box-shadow: var(--pastry-shadow-base), 0 0 14px rgba(217, 171, 88, 0.12) !important;
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .btn.u-btn,
+  .file-proxy.u-btn,
+  .pastry-btn,
+  .action-btn,
+  .primary-btn {
+    min-height: 42px !important;
+    padding-inline: 16px !important;
+    font-size: 14px !important;
+  }
+
+  .recipe-action-grid,
+  .actions-row,
+  .top-actions {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .pearl-joystick {
+    --joy-size: 160px !important;
+    --joy-center-size: 62px !important;
+  }
+
+  .joystick-title span {
+    text-align: left !important;
+  }
+
+  .fab-settings.u-btn {
+    left: 12px !important;
+    bottom: 14px !important;
+  }
 }
 
-.recipe-filter-btn:active {
-  transform: translateY(1px) !important;
-  box-shadow: var(--pastry-shadow-pressed) !important;
+/* Настройки — джойстики и сетка печати не выходят за ширину панели */
+.settings-panel .joystick-block {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
 }
 
-.recipe-filter-btn.active {
-  border-color: rgba(185, 133, 54, 0.78) !important;
-  color: #9b5d00 !important;
-  box-shadow: var(--pastry-shadow-primary) !important;
-  filter: saturate(1.04) !important;
+.settings-panel .pearl-joystick {
+  --joy-size: 168px !important;
+  --joy-center-size: 64px !important;
+  width: min(var(--joy-size), 100%) !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
 }
 
-.recipe-filter-btn:focus-visible {
-  outline: none !important;
-  box-shadow: var(--pastry-shadow-base), var(--pastry-focus-ring) !important;
+.settings-panel .pearl-slider,
+.settings-panel input[type="range"]:not(.print-hidden-range) {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-/* ---------- reduced motion ---------- */
+.settings-panel .print-template-controls {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 1120px) {
+  .settings-panel .print-template-controls {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 14px !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pastry-btn,
   .btn.u-btn,
   .file-proxy.u-btn,
-  .pearl-slider,
-  .pearl-slider::-webkit-slider-thumb,
-  .pearl-slider::-moz-range-thumb,
   .recipe-filter-btn,
+  .pearl-slider,
   .joy-dir,
   .joy-half {
     transition: none !important;
-    animation: none !important;
   }
 
   .pastry-btn:hover:not(:disabled),

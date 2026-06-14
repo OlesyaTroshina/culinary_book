@@ -116,7 +116,7 @@ async function main() {
   try {
     const result = await Agent.prompt(prompt, {
       apiKey,
-      model: { id: "composer-2" },
+      model: { id: "claude-opus" },
       local: { cwd: ROOT, settingSources: [] },
     });
 
