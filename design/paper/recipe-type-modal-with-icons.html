@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper artboard — Модал выбора типа рецепта</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Токены из index.html — code-to-design */
+    :root {
+      --font-ui: "Playfair Display", "Times New Roman", Times, serif;
+      --bg: #f5efe6;
+      --text: #4b4036;
+      --muted: #75695f;
+      --line: rgba(135, 115, 95, 0.25);
+      --accent: #d9ab58;
+      --accent2: #b98536;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-ui);
+      color: var(--text);
+      background:
+        linear-gradient(145deg, #efe5d5, #e5d8c5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    /* Artboard 860×640 — модал «Добавить рецепт» с иконками категорий */
+    .artboard {
+      width: 860px;
+      min-height: 640px;
+      border-radius: 40px;
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.28);
+      border: 1px solid var(--line);
+      box-shadow:
+        inset 3px 3px 8px rgba(255, 255, 255, 0.85),
+        inset -4px -4px 8px rgba(180, 160, 140, 0.15),
+        0 30px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .artboard-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .modal-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 28px 28px 24px;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.18),
+        inset 3px 3px 8px rgba(255, 255, 255, 0.85);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .recipe-type-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0 0 22px;
+    }
+
+    .recipe-type-option {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      column-gap: 12px;
+      row-gap: 4px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 14px 16px;
+      background: rgba(247, 240, 229, 0.66);
+      cursor: pointer;
+      box-shadow:
+        inset 2px 2px 7px rgba(255, 255, 255, 0.72),
+        0 8px 18px rgba(130, 110, 90, 0.08);
+      transition: 0.2s;
+    }
+
+    .recipe-type-option:hover {
+      transform: translateY(-2px);
+      background: rgba(244, 215, 161, 0.26);
+    }
+
+    .recipe-type-option.selected {
+      border-color: rgba(185, 133, 54, 0.68);
+      background: rgba(244, 215, 161, 0.38);
+      box-shadow:
+        0 0 0 3px rgba(217, 171, 88, 0.16),
+        inset 2px 2px 7px rgba(255, 255, 255, 0.72);
+    }
+
+    .recipe-type-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      object-fit: cover;
+      grid-row: 1 / span 2;
+      box-shadow: 0 4px 12px rgba(130, 110, 90, 0.18);
+    }
+
+    .recipe-type-title {
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .recipe-type-hint {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 28px;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 48px;
+    }
+
+    .btn-save {
+      background: linear-gradient(180deg, #ffd75a, #b96600);
+      color: #4b3316;
+      box-shadow: 0 6px 14px rgba(86, 56, 16, 0.14);
+    }
+
+    .btn-cancel {
+      background: rgba(247, 240, 229, 0.9);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .note {
+      margin-top: 24px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(217, 171, 88, 0.12);
+      border: 1px dashed rgba(185, 133, 54, 0.45);
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .note strong { color: var(--text); }
+  </style>
+</head>
+<body>
+  <article class="artboard" aria-label="Модал выбора типа рецепта — дизайн-эксперимент">
+    <p class="artboard-label">Paper · code-to-design · culinary book</p>
+
+    <div class="modal-card">
+      <h2>Рецепт чего вы хотите добавить?</h2>
+
+      <div class="recipe-type-grid">
+        <div class="recipe-type-option selected">
+          <img class="recipe-type-icon" src="../../icons/categories/Коржи.png" alt="" width="48" height="48">
+          <span class="recipe-type-title">Торты</span>
+          <span class="recipe-type-hint">Бисквитные, муссовые, многоярусные торты, сборка, покрытие, декор, упаковка.</span>
+        </div>
+
+        <div class="recipe-type-option">
+          <img class="recipe-type-icon" src="../../icons/categories/Крем.png" alt="" width="48" height="48">
+          <span class="recipe-type-title">Кремы и начинки</span>
+          <span class="recipe-type-hint">Кремы, ганаш, меренга, конфи, курды, муссы, глазури и покрытия.</span>
+        </div>
+
+        <div class="recipe-type-option">
+          <img class="recipe-type-icon" src="../../icons/categories/Кексы - Капкейки.png" alt="" width="48" height="48">
+          <span class="recipe-type-title">Формовая выпечка</span>
+          <span class="recipe-type-hint">Паски, куглофы, кексы, хлеб, бриоши, булочки, выпечка в формах.</span>
+        </div>
+
+        <div class="recipe-type-option">
+          <img class="recipe-type-icon" src="../../icons/categories/Зефир.png" alt="" width="48" height="48">
+          <span class="recipe-type-title">Зефир и конфеты</span>
+          <span class="recipe-type-hint">Зефир, маршмеллоу, мармелад, пастила, суфле, конфеты.</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-save">Продолжить ›</button>
+        <button type="button" class="btn btn-cancel">Отмена</button>
+      </div>
+    </div>
+
+    <p class="note">
+      <strong>Зачем это в Paper:</strong> в коде модал (#recipeTypeModal) сейчас только текст и radio.
+      В проекте уже есть 50+ PNG-иконок категорий (<code>icons/categories/</code>).
+      На canvas можно быстро согласовать визуал с иконками, отступами и состояниями — и затем
+      skill <em>design-to-code</em> перенесёт утверждённый макет обратно в <code>index.html</code>.
+    </p>
+  </article>
+</body>
+</html>

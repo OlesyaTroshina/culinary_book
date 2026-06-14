@@ -1,0 +1,11 @@
+{
+  "name": "culinary-book-calculator",
+  "private": true,
+  "scripts": {
+    "verify": "node scripts/verify-app.js",
+    "review:ui": "node scripts/review-ui-tz.mjs"
+  },
+  "devDependencies": {
+    "@cursor/sdk": "latest"
+  }
+}

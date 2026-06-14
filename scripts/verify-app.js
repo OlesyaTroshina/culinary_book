@@ -86,6 +86,10 @@ const required = [
   'creamImportCompareModal',
   'layerCreamLinks',
   'IMPORT_SHEET_TABS',
+  'function sortCakeRecipeCategories',
+  'function normalizeCakeIngredientOrder',
+  'function getCakeCategoryStage',
+  'CAKE_RECIPE_STAGE_ORDER',
 ];
 for (const r of required) {
   if (h.includes(r)) ok('есть ' + r);

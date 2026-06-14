@@ -6,9 +6,6 @@
     "netlify-skills": {
       "enabled": true
     },
-    "datadog": {
-      "enabled": true
-    },
     "scylladb": {
       "enabled": true
     },
@@ -19,6 +16,18 @@
       "enabled": true
     },
     "vantage": {
+      "enabled": true
+    },
+    "convex": {
+      "enabled": true
+    },
+    "paradedb": {
+      "enabled": true
+    },
+    "linear": {
+      "enabled": true
+    },
+    "higgsfield": {
       "enabled": true
     }
   }
